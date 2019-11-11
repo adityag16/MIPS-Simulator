@@ -640,7 +640,12 @@ instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint
         PC = next_PC;
         next_PC += 4; 
     }
-    
+    else if(mem_address < IMEMOFFSET + IMEMLENGTH && mem_address >= IMEMOFFSET){
+        uint32_t imem_index = imem_address_to_index(mem_address);
+        lwl_helper(Instruction_mem, imem_index, rt, mem_address);
+        PC = next_PC;
+        next_PC += 4; 
+
 
 }
 
