@@ -32,5 +32,6 @@ void store_into_imem(uint32_t size_of_bin, std::string binary_num, std::vector<u
 
 int32_t get_c();
 
+void lwl_helper(std::vector<uint8_t> mem, uint32_t index, int32_t &rt, int32_t mem_address);
 
 #endif

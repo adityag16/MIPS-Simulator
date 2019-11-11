@@ -29,6 +29,25 @@ uint32_t pull_hword_from_memory(std::vector<uint8_t> mem, uint32_t index){
 	return (mem[index] << 8) + (mem[index+1]);
 }
 
+void lwl_helper(std::vector<uint8_t> mem, uint32_t index, int32_t &rt, int32_t mem_address){
+	int32_t word; 
+	if(mem_address % 4 == 0){
+            word = pull_word_from_memory(mem, index);
+            rt = word;
+        }
+        else if(mem_address % 4 == 1){
+            word = (mem[index] << 24) + (mem[index + 1] << 16) + (mem[index + 2] << 8);
+            rt = word + (rt & 0xFF);
+        }
+        else if(mem_address % 4 == 2){
+            word = (mem[index] << 24) + (mem[index + 1] << 16);
+            rt = word + (rt & 0xFFFF);
+        }
+        else{
+            word = word = (mem[index] << 24);
+            rt = word + (rt & 0xFFFFFF);
+        }
+}
 
 void store_word_to_memory(std::vector<uint8_t>& mem, uint32_t index, int32_t rt){
 	uint8_t byte_0 = rt >> 24;

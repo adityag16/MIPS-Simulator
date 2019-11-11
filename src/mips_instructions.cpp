@@ -631,7 +631,33 @@ instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0;    
 }
 
-// instruction_rc LWL(){}
+instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem){
+    int32_t sign_ext_offset = offset;
+    int32_t mem_address = base + sign_ext_offset;
+    if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
+        int32_t word; 
+        uint32_t dmem_index = dmem_address_to_index(mem_address);
+        if(mem_address % 4 == 0){
+            word = pull_word_from_memory(Data_mem, dmem_index);
+            rt = word;
+        }
+        else if(mem_address % 4 == 1){
+            word = (Data_mem[dmem_index] << 24) + (Data_mem[dmem_index + 1] << 16) + (Data_mem[dmem_index + 2] << 8);
+            rt = word + (rt & 0xFF);
+        }
+        else if(mem_address % 4 == 2){
+            word = (Data_mem[dmem_index] << 24) + (Data_mem[dmem_index + 1] << 16);
+            rt = word + (rt & 0xFFFF);
+        }
+        else{
+            word = word = (Data_mem[dmem_index] << 24);
+            rt = word + (rt & 0xFFFFFF);
+        }
+        PC = next_PC;
+        next_PC += 4; 
+    }
+
+}
 
 // instruction_rc LWR(){}
 
