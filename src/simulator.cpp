@@ -19,7 +19,6 @@ int main(int argc, char* argv[]){
 	std::fill(imem.begin(), imem.end(), 0);
 	std::fill(dmem.begin(), dmem.end(), 0);
 
-	dmem[3] = 13;
 	uint32_t pc = IMEMOFFSET;
 	uint32_t nextpc = pc+4;
 	int32_t registers[32] = {0};
