@@ -22,7 +22,7 @@ uint32_t pull_from_imemory(std::vector<uint8_t> imem, uint32_t pc){
 int main(int argc, char* argv[]){
 	
 	std::vector<uint8_t> imem;
-	imem.resize(IMEM_LENGTH);
+	imem.resize(IMEMLENGTH);
 	std::vector<uint8_t> dmem;
 	dmem.resize(0x4000000);
 	std::fill(imem.begin(), imem.end(), 0);
@@ -50,14 +50,14 @@ int main(int argc, char* argv[]){
 	store_into_imem(size_of_bin, binary_num, imem);
 	while(pc!=0){
 		
-		if(pc<IMEMOFFSET || pc> IMEMOFFSET + IMEM_LENGTH){
+		if(pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH){
 		exit(-12);
 		}
 		else{
 			for (int i = 0 ; i < size_of_bin; i++){
 				uint32_t instruction = pull_from_imemory(imem, i);
 				uint32_t tmp =Instruction_decode(instruction, instruction_segments);
-				instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments);
+				instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments, imem);
 				std::cerr<<std::endl;
 				std::cerr<< registers[instruction_segments[1]]<< " rs" << std::endl;
 				std::cerr<< registers[instruction_segments[2]]<< " rt" << std::endl;
