@@ -66,7 +66,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             case 0b001001: return_code =  JALR(registers[rs], registers[rd], PC, next_PC);
             break;
 
-            default: exit(Invalid_Instruction);
+            default: std::exit(Invalid_Instruction);
         }
     }
     else if(opcode == 0b000010 || opcode == 0b000011){ // J Type
@@ -79,7 +79,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             return_code =  JAL(inst_index, PC, next_PC, registers[31]);
         }
         else{
-            exit(Invalid_Instruction);
+            std::exit(Invalid_Instruction);
         }
         
     }
@@ -146,7 +146,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             break;
             case 0b100010: return_code = LWL(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
                 
-            default: exit(Invalid_Instruction);
+            default: std::exit(Invalid_Instruction);
         }
 
     }
@@ -157,10 +157,10 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
 // intialise PC and next_pc = PC + 4
 instruction_rc ADD(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
     if((rt < 0) && (rs < 0) && (rt + rs >= 0)){
-        exit(Arithmetic_Exception);
+        std::exit(Arithmetic_Exception);
     }
     else if((rt >= 0) && (rs >= 0) && (rs + rt < 0)){
-        exit(Arithmetic_Exception);
+        std::exit(Arithmetic_Exception);
     }
     else{
         rd =  rs + rt;
@@ -175,10 +175,10 @@ instruction_rc ADDI(const int32_t &rs, int32_t &rt, const int16_t &immediate, ui
     int32_t sign_extended_const = immediate;
 
     if((rs < 0) && (sign_extended_const < 0) && (rs + sign_extended_const >=0)){
-        exit(Arithmetic_Exception);
+        std::exit(Arithmetic_Exception);
     }
     else if((rs >= 0) && (sign_extended_const >= 0) && (rs + sign_extended_const < 0)){
-        exit(Arithmetic_Exception);
+        std::exit(Arithmetic_Exception);
     }
     else{
         rt = rs + sign_extended_const;
@@ -449,7 +449,7 @@ instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
         next_PC += 4;
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
     
     return 0; 
@@ -491,7 +491,7 @@ instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
         next_PC += 4;
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
     
     return 0; 
@@ -535,7 +535,7 @@ instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
         }
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
     
     return 0;
@@ -579,7 +579,7 @@ instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
         }
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
     
     return 0;    
@@ -618,15 +618,15 @@ instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
                 next_PC += 4;
             }
             else{
-                exit(Memory_Exception);
+                std::exit(Memory_Exception);
             }
         }
         else{
-            exit(Memory_Exception);
+            std::exit(Memory_Exception);
         }
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
     
     return 0;    
@@ -680,7 +680,7 @@ instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint
         next_PC += 4; 
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
 
     return 0;
@@ -920,10 +920,10 @@ instruction_rc SRLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t 
 
 instruction_rc SUB(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
     if((rs < 0) && (rt >= 0) && (rs - rt >= 0)){
-        exit(Arithmetic_Exception);
+        std::exit(Arithmetic_Exception);
     }
     else if((rs >= 0) && (rt < 0) && (rs - rt < 0)){
-        exit(Arithmetic_Exception);
+        std::exit(Arithmetic_Exception);
     }
     else{
         rd =  rs - rt;
@@ -960,16 +960,16 @@ instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
                 next_PC += 4;
             }
             else{
-                exit(Memory_Exception);
+                std::exit(Memory_Exception);
             }
             
         }
         else{
-            exit(Memory_Exception);
+            std::exit(Memory_Exception);
         }
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
 
     return 0;
@@ -997,7 +997,7 @@ instruction_rc SB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
         next_PC += 4;
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
 
     return 0; 
@@ -1025,11 +1025,11 @@ instruction_rc SH(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
             next_PC += 4;
         }
         else{
-            exit(Memory_Exception);
+            std::exit(Memory_Exception);
         }
     }
     else{
-        exit(Memory_Exception);
+        std::exit(Memory_Exception);
     }
 
     return 0; 

@@ -35,14 +35,14 @@ int main(int argc, char* argv[]){
 		binStream.read(&binary_num[0], size_of_bin);// read and open files. writes them to binary_num
 	}
 	else{
-		exit(-21);
+		std::std::exit(-21);
 	}
 	binStream.close();
 	store_into_imem(size_of_bin, binary_num, imem);
 	while(pc!=0){
 		
 		if(pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH){
-		exit(-12);
+		std::std::exit(-12);
 		}
 		else{
 			for (int i = 0 ; i < size_of_bin; i++){
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]){
 				i+=3;// creates instructions from memory
 		}
 		
-		exit(registers[2]);
+		std::std::exit(registers[2]);
 		}
 	}
 	
