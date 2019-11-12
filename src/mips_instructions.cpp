@@ -977,7 +977,7 @@ instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0;
 }
 
-instruction_rc SB(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem){
+instruction_rc SB(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset;
     
@@ -1005,7 +1005,7 @@ instruction_rc SB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0; 
 }
 
-instruction_rc SH(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem){
+instruction_rc SH(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
