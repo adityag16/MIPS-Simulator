@@ -27,7 +27,6 @@ int main(int argc, char* argv[]){
 	std::vector<uint32_t> instruction_segments;
 	std::string binary_num; //declarations
 	
-
 	std::ifstream binStream;
 	binStream.open(argv[1], std::ios::in | std::ios::binary | std::ios::ate);
 	if (binStream.is_open()){
@@ -42,7 +41,7 @@ int main(int argc, char* argv[]){
 	binStream.close();
 	store_into_imem(size_of_bin, binary_num, imem);
 	while(pc!=0){
-		if((pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH) && (pc % 4 != 0)){
+		if(pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH || pc % 4 != 0){
 			std::exit(Memory_Exception);
 		}
 		int index = imem_address_to_index(pc);
