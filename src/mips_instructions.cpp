@@ -126,6 +126,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
                 else if(instruction_segments[2] == 0b10000){
                     return_code =  BLTZAL(registers[rs], offset, PC, registers[31], next_PC);
                 }
+            break;
             case 0b101011: return_code =  SW(registers[base], registers[rt], offset, PC, next_PC, Data_mem);
             break;
             case 0b100011: return_code =  LW(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
@@ -248,7 +249,6 @@ instruction_rc BGEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, u
     if(rs >= 0){
         PC = next_PC;
         next_PC = PC + offset;
-
     }
     else{
         PC = next_PC;
