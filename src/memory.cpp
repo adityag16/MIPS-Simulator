@@ -18,6 +18,7 @@ uint32_t index_to_dmemaddress(uint32_t index){
 }
 uint32_t pull_word_from_memory(std::vector<uint8_t> mem, uint32_t index){
 	return (mem[index] << 24) + (mem[index+1] << 16) + (mem[index+2]<< 8) + (mem[index+3]);
+	
 }
 
 uint32_t pull_byte_from_memory(std::vector<uint8_t> mem, uint32_t index){
@@ -59,6 +60,8 @@ void store_word_to_memory(std::vector<uint8_t>& mem, uint32_t index, int32_t rt)
 	mem[index + 1] = byte_1;
 	mem[index + 2] = byte_2;
 	mem[index + 3] = byte_3;
+
+
 }
 
 

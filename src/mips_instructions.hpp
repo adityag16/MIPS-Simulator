@@ -96,7 +96,7 @@ instruction_rc XORI(int32_t &rs, const int32_t &rt, const int16_t &immediate, ui
 
 instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem);
 
-instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem);
+instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem);
 
 instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC,std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem);
 

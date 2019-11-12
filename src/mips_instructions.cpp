@@ -597,8 +597,10 @@ instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     int32_t mem_address = base + sign_ext_offset; 
     if(mem_address % 4 == 0){
         if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
+
             uint32_t dmem_index = dmem_address_to_index(mem_address);
             int32_t word = pull_word_from_memory(Data_mem, dmem_index);
+
             rt = word;
             PC = next_PC;
             next_PC += 4; 
@@ -943,7 +945,7 @@ instruction_rc SUBU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t 
 
 }
 
-instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem){
+instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
     if(mem_address % 4 == 0){
