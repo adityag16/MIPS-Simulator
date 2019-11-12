@@ -9,15 +9,6 @@
 #include "decode.hpp"
 #include "mips_instructions.hpp"
 #include "memory.hpp"
-void store_into_imem(uint32_t size_of_bin, std::string binary_num, std::vector<uint8_t> &imem){
-	for (int i = 0 ; i < size_of_bin; i++){
-		std::bitset<8> bin_i(binary_num[i]);
-		imem[i]= bin_i.to_ulong();// converts bitsets to ints and stores in mem
-	}
-}
-uint32_t pull_from_imemory(std::vector<uint8_t> imem, uint32_t pc){
-	return (imem[pc] << 24) + (imem[pc+1] << 16) + (imem[pc+2]<< 8)	+ (imem[pc+3]);
-}
 
 int main(int argc, char* argv[]){
 	
@@ -55,7 +46,7 @@ int main(int argc, char* argv[]){
 		}
 		else{
 			for (int i = 0 ; i < size_of_bin; i++){
-				uint32_t instruction = pull_from_imemory(imem, i);
+				uint32_t instruction = pull_word_from_memory(imem, i);
 				uint32_t tmp =Instruction_decode(instruction, instruction_segments);
 				instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments, imem);
 				std::cerr<<std::endl;
