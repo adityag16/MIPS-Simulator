@@ -145,7 +145,6 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             case 0b101001: return_code =  SH(registers[base], registers[rt], offset, PC, next_PC, Data_mem);
             break;
             case 0b100010: return_code = LWL(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
-            break;
                 
             default: exit(Invalid_Instruction);
         }
