@@ -17,6 +17,9 @@ int main(int argc, char* argv[]){
 	std::vector<uint8_t> dmem;
 	dmem.resize(0x4000000);
 	std::fill(imem.begin(), imem.end(), 0);
+	std::fill(dmem.begin(), dmem.end(), 0);
+
+	dmem[3] = 13;
 	uint32_t pc = IMEMOFFSET;
 	uint32_t nextpc = pc+4;
 	int32_t registers[32] = {0};
@@ -35,36 +38,23 @@ int main(int argc, char* argv[]){
 		binStream.read(&binary_num[0], size_of_bin);// read and open files. writes them to binary_num
 	}
 	else{
-		std::std::exit(-21);
+		std::exit(-21);
 	}
 	binStream.close();
 	store_into_imem(size_of_bin, binary_num, imem);
 	while(pc!=0){
-		
-		if(pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH){
-		std::std::exit(-12);
+		if((pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH) && (pc % 4 != 0)){
+			std::exit(Memory_Exception);
 		}
-		else{
-			for (int i = 0 ; i < size_of_bin; i++){
-				uint32_t instruction = pull_word_from_memory(imem, i);
-				uint32_t tmp = Instruction_decode(instruction, instruction_segments);
-				instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments, imem);
-				std::cerr<<std::endl;
-				std::cerr<< registers[instruction_segments[1]]<< " rs" << std::endl;
-				std::cerr<< registers[instruction_segments[2]]<< " rt" << std::endl;
-				std::cerr<< registers[instruction_segments[3]]<< " rd" << std::endl;
+		int index = imem_address_to_index(pc);
+		uint32_t instruction = pull_word_from_memory(imem, index);
+		uint32_t tmp = Instruction_decode(instruction, instruction_segments);
+		instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments, imem);
+		instruction_segments.clear();
 
-				std::cerr<< pc << "  pc "<<std::endl;
-				instruction_segments.clear();
-				std::cerr<<std::endl;
-				i+=3;// creates instructions from memory
-		}
-		
-		std::std::exit(registers[2]);
-		}
 	}
-	
-return 0;
+	std::exit(registers[2] & 0xFF);
+	return 0;
 }
 
 

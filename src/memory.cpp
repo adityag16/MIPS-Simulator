@@ -59,7 +59,6 @@ void store_word_to_memory(std::vector<uint8_t>& mem, uint32_t index, int32_t rt)
 	mem[index + 1] = byte_1;
 	mem[index + 2] = byte_2;
 	mem[index + 3] = byte_3;
-
 }
 
 

@@ -586,7 +586,7 @@ instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
 }
 
 instruction_rc LUI(int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
-    rt = (immediate << 16) && 0xFFFF0000;
+    rt = (immediate << 16) & 0xFFFF0000;
     PC = next_PC;
     next_PC += 4;
 
