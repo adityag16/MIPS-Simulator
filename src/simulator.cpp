@@ -47,7 +47,7 @@ int main(int argc, char* argv[]){
 		else{
 			for (int i = 0 ; i < size_of_bin; i++){
 				uint32_t instruction = pull_word_from_memory(imem, i);
-				uint32_t tmp =Instruction_decode(instruction, instruction_segments);
+				uint32_t tmp = Instruction_decode(instruction, instruction_segments);
 				instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments, imem);
 				std::cerr<<std::endl;
 				std::cerr<< registers[instruction_segments[1]]<< " rs" << std::endl;
@@ -59,7 +59,8 @@ int main(int argc, char* argv[]){
 				std::cerr<<std::endl;
 				i+=3;// creates instructions from memory
 		}
-		exit(0);
+		
+		exit(registers[2]);
 		}
 	}
 	
