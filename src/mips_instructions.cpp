@@ -645,7 +645,44 @@ instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint
         lwl_helper(Instruction_mem, imem_index, rt, mem_address);
         PC = next_PC;
         next_PC += 4; 
+    }
+    else if(mem_address >= ADDR_GETC && mem_address < ADDR_GETC + 4){
+        int32_t Char_in = get_c();
+        if(mem_address % 4 == 0){
+            rt = Char_in;
+        }
+        else if(mem_address % 4 == 1){
+            if(Char_in == -1){
+                rt = (rt | 0xFFFFFF00);
+            }
+            else{
+                rt = (rt & 0xFF) + ((Char_in & 0x00FFFFFF) << 8);
+            }
+        }
+        else if(mem_address % 4 == 2){
+            if(Char_in == -1){
+                rt = (rt | 0xFFFF0000);
+            }
+            else{
+                rt = (rt & 0xFFFF) + ((Char_in & 0x0000FFFF) << 16);
+            }
+        }
+        else{
+            if(Char_in == -1){
+                rt = (rt | 0xFF000000);
+            }
+            else{
+                rt = (rt & 0xFFFFFF) + ((Char_in & 0xFF) << 24);
+            }
+        }
+        PC = next_PC;
+        next_PC += 4; 
+    }
+    else{
+        exit(Memory_Exception);
+    }
 
+    return 0;
 
 }
 
