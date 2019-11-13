@@ -1046,10 +1046,10 @@ instruction_rc XOR(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &
     return 0;
 }
 
-instruction_rc XORI(int32_t &rs, const int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
+instruction_rc XORI(const int32_t &rs, int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
     uint32_t zero_ext_imm = immediate;
 
-    rs = rt ^ zero_ext_imm;
+    rt = rs ^ zero_ext_imm;
 
     PC = next_PC;
     next_PC += 4;
