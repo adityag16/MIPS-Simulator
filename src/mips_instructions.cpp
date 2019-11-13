@@ -418,7 +418,9 @@ instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
 
     if(mem_address <= DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
         uint32_t dmem_index = dmem_address_to_index(mem_address);
-        int32_t sign_ext_byte = pull_byte_from_memory(Data_mem, dmem_index);
+        int8_t byte = pull_byte_from_memory(Data_mem, dmem_index);
+        int32_t sign_ext_byte = byte;
+        
         rt = sign_ext_byte; 
         PC = next_PC;
         next_PC += 4;
@@ -954,7 +956,7 @@ instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
         if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
             uint32_t index = dmem_address_to_index(mem_address);
             store_word_to_memory(Data_mem, index, rt);
-                        
+
             PC = next_PC;
             next_PC += 4;
         }
