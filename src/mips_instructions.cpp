@@ -1,6 +1,6 @@
 #include "memory.hpp"
 #include "mips_instructions.hpp"
-
+#include <bitset>
 
 instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, const std::vector<uint32_t>& instruction_segments, std::vector<uint8_t>& Instruction_mem){
     uint32_t opcode = instruction_segments[0];
@@ -503,7 +503,10 @@ instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     if(mem_address % 2 == 0){
         if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
             uint32_t dmem_index = dmem_address_to_index(mem_address);
-            int32_t half_word = pull_hword_from_memory(Data_mem, dmem_index);
+            int16_t half_word16 = pull_hword_from_memory(Data_mem, dmem_index);
+            int32_t half_word = half_word16;
+
+
             rt = half_word;
             PC = next_PC;
             next_PC += 4; 
@@ -951,6 +954,7 @@ instruction_rc SW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
         if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
             uint32_t index = dmem_address_to_index(mem_address);
             store_word_to_memory(Data_mem, index, rt);
+                        
             PC = next_PC;
             next_PC += 4;
         }
