@@ -187,17 +187,16 @@ instruction_rc ADDI(const int32_t &rs, int32_t &rt, const int16_t &immediate, ui
         next_PC += 4;
 
     }
-
     return 0;
 }
 
 instruction_rc ADDIU(const int32_t &rs, int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
     int32_t sign_extended_const = immediate;
-
-    rt += sign_extended_const;
+    
+    rt = rs + sign_extended_const;
     PC = next_PC;
     next_PC += 4;
-
+    
     return 0;
 }
 
