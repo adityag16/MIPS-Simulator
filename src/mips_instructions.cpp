@@ -146,7 +146,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             case 0b101001: return_code =  SH(registers[base], registers[rt], offset, PC, next_PC, Data_mem);
             break;
             case 0b100010: return_code = LWL(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
-                
+            break;
             default: std::exit(Invalid_Instruction);
         }
 
@@ -192,7 +192,7 @@ instruction_rc ADDI(const int32_t &rs, int32_t &rt, const int16_t &immediate, ui
 
 instruction_rc ADDIU(const int32_t &rs, int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
     int32_t sign_extended_const = immediate;
-    
+
     rt = rs + sign_extended_const;
     PC = next_PC;
     next_PC += 4;
