@@ -420,7 +420,7 @@ instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
         uint32_t dmem_index = dmem_address_to_index(mem_address);
         int8_t byte = pull_byte_from_memory(Data_mem, dmem_index);
         int32_t sign_ext_byte = byte;
-        
+
         rt = sign_ext_byte; 
         PC = next_PC;
         next_PC += 4;
@@ -537,6 +537,9 @@ instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
             PC = next_PC;
             next_PC += 4;
         }
+        else{
+            std::exit(Memory_Exception);
+        }
     }
     else{
         std::exit(Memory_Exception);
@@ -593,6 +596,8 @@ instruction_rc LUI(int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t
     rt = (immediate << 16) & 0xFFFF0000;
     PC = next_PC;
     next_PC += 4;
+
+    return 0;
 
 }
 
