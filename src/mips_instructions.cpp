@@ -584,6 +584,9 @@ instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
             PC = next_PC;
             next_PC += 4;
         }
+        else{
+           std::exit(Memory_Exception); 
+        }
     }
     else{
         std::exit(Memory_Exception);
