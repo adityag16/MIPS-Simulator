@@ -26,17 +26,17 @@ instruction_rc ANDI(const int32_t &rs, int32_t &rt, const int16_t &immediate, ui
 
 instruction_rc BEQ(const int32_t &rs, const int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC);
 
-instruction_rc BGEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC); //000001
+instruction_rc BGEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC); 
 
-instruction_rc BGEZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC); //000001
+instruction_rc BGEZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC); 
 
 instruction_rc BGTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC);
 
 instruction_rc BLEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC);
 
-instruction_rc BLTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC); //000001
+instruction_rc BLTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC); 
 
-instruction_rc BLTZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC); //000001
+instruction_rc BLTZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC); 
 
 instruction_rc BNE(const int32_t &rs, const int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC);
 
