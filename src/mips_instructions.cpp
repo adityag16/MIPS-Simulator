@@ -2,7 +2,7 @@
 #include "mips_instructions.hpp"
 #include <bitset>
 
-instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, const std::vector<uint32_t>& instruction_segments, std::vector<uint8_t>& Instruction_mem){
+instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, uint32_t* instruction_segments, std::vector<uint8_t>& Instruction_mem){
     uint32_t opcode = instruction_segments[0];
     instruction_rc return_code; 
 
@@ -376,7 +376,7 @@ instruction_rc DIVU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t
     return 0; 
 }
 
-instruction_rc J(const uint16_t &instr_index, uint32_t &PC, uint32_t &next_PC){
+instruction_rc J(const uint32_t &instr_index, uint32_t &PC, uint32_t &next_PC){
     uint32_t shifted_instr_index = instr_index << 2;
     uint32_t upper_bits = next_PC & 0xF0000000;
 
@@ -759,8 +759,13 @@ instruction_rc MULTU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_
     uint32_t unsigned_rs = rs;
     uint32_t unsigned_rt = rt;
     uint64_t product = unsigned_rs * unsigned_rt; 
+    std::bitset<64> p(product);
+    std::cerr << p << std::endl;
 
     HI = product & 0xFFFFFFFF00000000;
+    std::bitset<32> p2(HI);
+    std::cerr << p2 << std::endl;
+
     LO = product & 0xFFFFFFFF;
 
     PC = next_PC;

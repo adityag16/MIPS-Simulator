@@ -10,7 +10,7 @@ typedef int32_t instruction_rc;
 #define Memory_Exception -11
 #define Invalid_Instruction -12
 
-instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, const std::vector<uint32_t>& instruction_segments, std::vector<uint8_t>& Instruction_mem);
+instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, uint32_t* instruction_segments, std::vector<uint8_t>& Instruction_mem);
 
 instruction_rc ADD(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC);
 
@@ -44,7 +44,7 @@ instruction_rc DIV(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t 
 
 instruction_rc DIVU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO);
 
-instruction_rc J(const uint16_t &instr_index, uint32_t &PC, uint32_t &next_PC);
+instruction_rc J(const uint32_t &instr_index, uint32_t &PC, uint32_t &next_PC);
 
 instruction_rc JAL(const uint16_t &instr_index, uint32_t &PC, uint32_t &next_PC, int32_t &reg31);
 

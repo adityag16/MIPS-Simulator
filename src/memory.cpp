@@ -16,21 +16,21 @@ uint32_t dmem_address_to_index(uint32_t memaddress){
 uint32_t index_to_dmemaddress(uint32_t index){
 	return index+0x20000000;
 }
-uint32_t pull_word_from_memory(std::vector<uint8_t> mem, uint32_t index){
+uint32_t pull_word_from_memory(const std::vector<uint8_t>& mem, uint32_t index){
 	return (mem[index] << 24) + (mem[index+1] << 16) + (mem[index+2]<< 8) + (mem[index+3]);
 	
 }
 
-uint32_t pull_byte_from_memory(std::vector<uint8_t> mem, uint32_t index){
+uint32_t pull_byte_from_memory(const std::vector<uint8_t>& mem, uint32_t index){
 	uint32_t load_val = mem[index];
 	return load_val;
 }
 
-uint32_t pull_hword_from_memory(std::vector<uint8_t> mem, uint32_t index){
+uint32_t pull_hword_from_memory(const std::vector<uint8_t>& mem, uint32_t index){
 	return (mem[index] << 8) + (mem[index+1]);
 }
 
-void lwl_helper(std::vector<uint8_t> mem, uint32_t index, int32_t &rt, int32_t mem_address){
+void lwl_helper(const std::vector<uint8_t>& mem, uint32_t index, int32_t &rt, int32_t mem_address){
 	int32_t word; 
 	if(mem_address % 4 == 0){
         word = pull_word_from_memory(mem, index);

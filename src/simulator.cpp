@@ -24,9 +24,12 @@ int main(int argc, char* argv[]){
 	int32_t registers[32] = {0};
 	std::ifstream::pos_type size_of_bin;
 	int32_t HI = 0,LO = 0;
-	std::vector<uint32_t> instruction_segments;
+	uint32_t instruction_segments[6] = {0};
 	std::string binary_num; //declarations
 	
+	//std::cerr << "PC: " << pc << std::endl;
+	//std::cerr << "next PC: " << nextpc << std::endl;
+
 	std::ifstream binStream;
 	binStream.open(argv[1], std::ios::in | std::ios::binary | std::ios::ate);
 	if (binStream.is_open()){
@@ -41,14 +44,21 @@ int main(int argc, char* argv[]){
 	binStream.close();
 	store_into_imem(size_of_bin, binary_num, imem);
 	while(pc!=0){
+		//std::cerr << pc << std::endl;
 		if(pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH || pc % 4 != 0){
 			std::exit(Memory_Exception);
 		}
 		int index = imem_address_to_index(pc);
 		uint32_t instruction = pull_word_from_memory(imem, index);
+		// if(instruction == 0){
+		// 	pc = nextpc;
+		// 	nextpc += 4;
+		// }
 		uint32_t tmp = Instruction_decode(instruction, instruction_segments);
 		instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments, imem);
-		instruction_segments.clear();
+		//std::cerr << "PC: " << pc << std::endl;
+		//std::cerr << "next PC: " << nextpc << std::endl;
+		//std::cerr << registers[2] << std::endl;
 
 	}
 	std::exit(registers[2] & 0xFF);
