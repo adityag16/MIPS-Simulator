@@ -1,5 +1,3 @@
-#pragma once
-
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -12,24 +10,24 @@
 
 int main(int argc, char* argv[]){
 	
-	std::vector<uint8_t> imem;
-	imem.resize(IMEMLENGTH);
-	std::vector<uint8_t> dmem;
-	dmem.resize(0x4000000);
-	std::fill(imem.begin(), imem.end(), 0);
-	std::fill(dmem.begin(), dmem.end(), 0);
+	std::vector<uint8_t> Instruction_Memory;
+	Instruction_Memory.resize(IMEMLENGTH);
+	std::vector<uint8_t> Data_Memory;
+	Data_Memory.resize(DMEMLENGTH);
 
-	uint32_t pc = IMEMOFFSET;
-	uint32_t nextpc = pc+4;
+	std::fill(Instruction_Memory.begin(), Instruction_Memory.end(), 0);
+	std::fill(Data_Memory.begin(), Data_Memory.end(), 0);
+
+	uint32_t PC = IMEMOFFSET;
+	uint32_t Next_PC = PC+4;
 	int32_t registers[32] = {0};
-	std::ifstream::pos_type size_of_bin;
 	int32_t HI = 0,LO = 0;
+	
+	std::ifstream::pos_type size_of_bin;
+	
 	uint32_t instruction_segments[6] = {0};
 	std::string binary_num; //declarations
 	
-	//std::cerr << "PC: " << pc << std::endl;
-	//std::cerr << "next PC: " << nextpc << std::endl;
-
 	std::ifstream binStream;
 	binStream.open(argv[1], std::ios::in | std::ios::binary | std::ios::ate);
 	if (binStream.is_open()){
@@ -42,23 +40,16 @@ int main(int argc, char* argv[]){
 		std::exit(-21);
 	}
 	binStream.close();
-	store_into_imem(size_of_bin, binary_num, imem);
-	while(pc!=0){
-		//std::cerr << pc << std::endl;
-		if(pc<IMEMOFFSET || pc> IMEMOFFSET + IMEMLENGTH || pc % 4 != 0){
+	store_into_imem(size_of_bin, binary_num, Instruction_Memory);
+	
+	while(PC!=0){
+		if(PC<IMEMOFFSET || PC> IMEMOFFSET + IMEMLENGTH || PC % 4 != 0){
 			std::exit(Memory_Exception);
 		}
-		int index = imem_address_to_index(pc);
-		uint32_t instruction = pull_word_from_memory(imem, index);
-		// if(instruction == 0){
-		// 	pc = nextpc;
-		// 	nextpc += 4;
-		// }
+		int index = imem_address_to_index(PC);
+		uint32_t instruction = pull_word_from_memory(Instruction_Memory, index);
 		uint32_t tmp = Instruction_decode(instruction, instruction_segments);
-		instruction_rc retcode = MIPS_instruction(registers, HI, LO, pc, nextpc, dmem, instruction_segments, imem);
-		//std::cerr << "PC: " << pc << std::endl;
-		//std::cerr << "next PC: " << nextpc << std::endl;
-		//std::cerr << registers[2] << std::endl;
+		instruction_rc retcode = MIPS_instruction(registers, HI, LO, PC, Next_PC, Data_Memory, instruction_segments, Instruction_Memory);
 
 	}
 	std::exit(registers[2] & 0xFF);
