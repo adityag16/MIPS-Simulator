@@ -34,4 +34,6 @@ int32_t get_c();
 
 void lwl_helper(const std::vector<uint8_t>& mem, uint32_t index, int32_t &rt, int32_t mem_address);
 
+void lwr_helper(const std::vector<uint8_t>& mem, uint32_t index, int32_t &rt, int32_t mem_address);
+
 #endif
