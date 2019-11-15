@@ -67,8 +67,7 @@ void lwr_helper(const std::vector<uint8_t>& mem, uint32_t index, int32_t &rt, in
 		rt = (word & 0xFFFFFF) + (rt & 0xFF000000);
     }
     else{
-		word = pull_word_from_memory(mem, index);
-        rt = word;
+		rt = ((mem[index]) + (mem[index+1] << 8) + (mem[index+2] << 16) + (mem[index+3] << 24));
         
     }
 }
