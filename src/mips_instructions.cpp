@@ -840,7 +840,7 @@ instruction_rc OR(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &P
 }
 
 instruction_rc ORI(const int32_t &rs, int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
-    uint32_t zero_ext_offset = immediate;
+    uint32_t zero_ext_offset = (uint16_t) immediate;
 
     rt = rs | zero_ext_offset;
 
