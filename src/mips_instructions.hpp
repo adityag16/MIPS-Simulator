@@ -114,6 +114,8 @@ instruction_rc SB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
 
 instruction_rc SH(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem);
 
-instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem);
+instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem);
+
+instruction_rc LWR(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem);
 
 #endif

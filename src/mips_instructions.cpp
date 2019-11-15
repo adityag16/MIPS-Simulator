@@ -147,6 +147,8 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             break;
             case 0b100010: return_code = LWL(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
             break;
+            case 0b100110: return_code = LWR(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
+            break;
             default: std::exit(Invalid_Instruction);
         }
 
@@ -462,15 +464,15 @@ instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
 
     if(mem_address <= DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
         uint32_t dmem_index = dmem_address_to_index(mem_address);
-        uint32_t sign_ext_byte = pull_byte_from_memory(Data_mem, dmem_index);
-        rt = sign_ext_byte & 0x000000FF; 
+        int8_t zero_ext_byte = pull_byte_from_memory(Data_mem, dmem_index);
+        rt = zero_ext_byte & 0x000000FF; 
         PC = next_PC;
         next_PC += 4;
     }
     else if(mem_address <= IMEMOFFSET + IMEMLENGTH && mem_address >= IMEMOFFSET){
         uint32_t imem_index = imem_address_to_index(mem_address);
-        uint32_t sign_ext_byte = pull_byte_from_memory(Instruction_mem, imem_index);
-        rt = sign_ext_byte & 0x000000FF;
+        uint32_t zero_ext_byte = pull_byte_from_memory(Instruction_mem, imem_index);
+        rt = zero_ext_byte & 0x000000FF;
         PC = next_PC;
         next_PC += 4; 
     }
@@ -646,7 +648,7 @@ instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0;    
 }
 
-instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem){
+instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset;
     if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
@@ -701,7 +703,59 @@ instruction_rc LWL(const int32_t &base, int32_t &rt, const int16_t &offset, uint
 
 }
 
-// instruction_rc LWR(){}
+instruction_rc LWR(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem){
+    int32_t sign_ext_offset = offset;
+    int32_t mem_address = base + sign_ext_offset;
+    if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
+        uint32_t dmem_index = dmem_address_to_index(mem_address);
+        lwr_helper(Data_mem, dmem_index, rt, mem_address);
+        PC = next_PC;
+        next_PC += 4;
+    }
+    else if(mem_address < IMEMOFFSET + IMEMLENGTH && mem_address >= IMEMOFFSET){
+        uint32_t imem_index = imem_address_to_index(mem_address);
+        lwr_helper(Instruction_mem, imem_index, rt, mem_address);
+        PC = next_PC;
+        next_PC += 4; 
+    }
+    else if(mem_address >= ADDR_GETC && mem_address < ADDR_GETC + 4){
+        int32_t Char_in = get_c();
+        if(mem_address % 4 == 0){
+            if(Char_in == -1){
+                rt = rt | 0xFF;
+            }
+            else{
+                rt = (rt & 0xFFFFFF00) + (Char_in & 0xFF); 
+            }
+        }
+        else if(mem_address % 4 == 1){
+            if(Char_in == -1){
+                rt = rt | 0xFFFF;
+            }
+            else{
+                rt = (rt & 0xFFFF0000) + (Char_in & 0xFFFF);
+            }
+        }
+        else if(mem_address % 4 == 2){
+            if(Char_in == -1){
+                rt = rt | 0xFFFFFF;
+            }
+            else{
+                rt = (rt & 0xFF000000) + (Char_in & 0xFFFFFF);
+            }
+        }
+        else{
+            rt = Char_in;
+        }
+        PC = next_PC;
+        next_PC += 4;
+    }
+    else{
+        std::exit(Memory_Exception);
+    }
+
+    return 0;
+}
 
 instruction_rc MFHI(int32_t &rd, uint32_t &PC, uint32_t &next_PC, const int32_t &HI){
 
@@ -759,12 +813,8 @@ instruction_rc MULTU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_
     uint32_t unsigned_rs = rs;
     uint32_t unsigned_rt = rt;
     uint64_t product = unsigned_rs * unsigned_rt; 
-    std::bitset<64> p(product);
-    std::cerr << p << std::endl;
 
     HI = product & 0xFFFFFFFF00000000;
-    std::bitset<32> p2(HI);
-    std::cerr << p2 << std::endl;
 
     LO = product & 0xFFFFFFFF;
 
