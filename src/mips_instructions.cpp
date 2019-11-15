@@ -993,10 +993,11 @@ instruction_rc SRLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t 
 }
 
 instruction_rc SUB(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
-    if((rs < 0) && (rt >= 0) && (rs - rt >= 0)){
+    int32_t result = rs -rt;
+    if((rs < 0) && (rt >= 0) && (result >= 0)){
         std::exit(Arithmetic_Exception);
     }
-    else if((rs >= 0) && (rt < 0) && (rs - rt < 0)){
+    else if((rs >= 0) && (rt < 0) && (result < 0)){
         std::exit(Arithmetic_Exception);
     }
     else{
