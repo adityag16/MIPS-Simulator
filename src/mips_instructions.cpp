@@ -159,10 +159,11 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
 
 // intialise PC and next_pc = PC + 4
 instruction_rc ADD(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
-    if((rt < 0) && (rs < 0) && (rt + rs >= 0)){
+    int32_t result = rt + rs;
+    if((rt < 0) && (rs < 0) && (result >= 0)){
         std::exit(Arithmetic_Exception);
     }
-    else if((rt >= 0) && (rs >= 0) && (rs + rt < 0)){
+    else if((rt >= 0) && (rs >= 0) && (result < 0)){
         std::exit(Arithmetic_Exception);
     }
     else{
@@ -324,8 +325,9 @@ instruction_rc BLTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, u
 instruction_rc BLTZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC){
     int32_t offset = immediate << 2;
 
+    reg31 = PC + 8;
+
     if(rs < 0){
-        reg31 = PC + 8;
         PC = next_PC;
         next_PC = PC + offset;
     }
@@ -798,9 +800,12 @@ instruction_rc MTLO(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, int32_t 
 }
 
 instruction_rc MULT(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO){ // check signed func
-    int64_t product = rs * rt; 
+    int64_t sign_ext_rs = rs;
+    int64_t sign_ext_rt = rt;
 
-    HI = product & 0xFFFFFFFF00000000;
+    int64_t product = (sign_ext_rs * sign_ext_rt); 
+
+    HI = (product & 0xFFFFFFFF00000000) >> 32;
     LO = product & 0xFFFFFFFF;
 
     PC = next_PC;
@@ -810,11 +815,11 @@ instruction_rc MULT(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t
 }
 
 instruction_rc MULTU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO){
-    uint32_t unsigned_rs = rs;
-    uint32_t unsigned_rt = rt;
-    uint64_t product = unsigned_rs * unsigned_rt; 
+    uint64_t unsigned_rs = static_cast<uint32_t>(rs);
+    uint64_t unsigned_rt = static_cast<uint32_t>(rt);
+    uint64_t product = (unsigned_rs * unsigned_rt); 
 
-    HI = product & 0xFFFFFFFF00000000;
+    HI = (product & 0xFFFFFFFF00000000) >> 32;
 
     LO = product & 0xFFFFFFFF;
 
