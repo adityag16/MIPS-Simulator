@@ -262,8 +262,8 @@ instruction_rc BGEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, u
 instruction_rc BGEZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC){
     int32_t offset = immediate << 2;
 
+    reg31 = PC + 8;
     if(rs >= 0){
-        reg31 = PC + 8;
         PC = next_PC;
         next_PC = PC + offset;
     }
