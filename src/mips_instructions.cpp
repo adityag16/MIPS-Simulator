@@ -439,7 +439,7 @@ instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
-    if(mem_address <= DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
+    if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
         uint32_t dmem_index = dmem_address_to_index(mem_address);
         int8_t byte = pull_byte_from_memory(Data_mem, dmem_index);
         int32_t sign_ext_byte = byte;
@@ -448,7 +448,7 @@ instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
         PC = next_PC;
         next_PC += 4;
     }
-    else if(mem_address <= IMEMOFFSET + IMEMLENGTH && mem_address >= IMEMOFFSET){
+    else if(mem_address < IMEMOFFSET + IMEMLENGTH && mem_address >= IMEMOFFSET){
         uint32_t imem_index = imem_address_to_index(mem_address);
         int32_t sign_ext_byte = pull_byte_from_memory(Instruction_mem, imem_index);
         rt = sign_ext_byte;
@@ -483,14 +483,14 @@ instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
-    if(mem_address <= DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
+    if(mem_address < DMEMOFFSET + DMEMLENGTH && mem_address >= DMEMOFFSET){
         uint32_t dmem_index = dmem_address_to_index(mem_address);
         int8_t zero_ext_byte = pull_byte_from_memory(Data_mem, dmem_index);
         rt = zero_ext_byte & 0x000000FF; 
         PC = next_PC;
         next_PC += 4;
     }
-    else if(mem_address <= IMEMOFFSET + IMEMLENGTH && mem_address >= IMEMOFFSET){
+    else if(mem_address < IMEMOFFSET + IMEMLENGTH && mem_address >= IMEMOFFSET){
         uint32_t imem_index = imem_address_to_index(mem_address);
         uint32_t zero_ext_byte = pull_byte_from_memory(Instruction_mem, imem_index);
         rt = zero_ext_byte & 0x000000FF;
