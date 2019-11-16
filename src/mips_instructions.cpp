@@ -479,7 +479,7 @@ instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
         next_PC += 4; 
     }
     else if(mem_address >= ADDR_GETC && mem_address < ADDR_GETC + 4){
-        uint32_t return_data = get_c();
+        int32_t return_data = get_c();
 
         if(return_data != -1){
             if(mem_address == ADDR_GETC + 3){
@@ -490,7 +490,7 @@ instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
             }
         }
         else{
-            rt = -1 && 0x000000FF;
+            rt = -1 & 0xFF;
         }
         PC = next_PC;
         next_PC += 4;
