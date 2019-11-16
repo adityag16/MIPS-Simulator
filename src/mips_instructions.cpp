@@ -15,13 +15,13 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
         uint32_t function_code = instruction_segments[5];
 
         switch(function_code){
-            case 0b100000: return_code =  ADD(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b100000: return_code =  ADD(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b100001: return_code =  ADDU(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b100001: return_code =  ADDU(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break; 
             case 0b100010: return_code =  SUB(registers[rs], registers[rt], registers[rd], PC, next_PC);
             break;
-            case 0b100100: return_code =  AND(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b100100: return_code =  AND(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
             case 0b011010: return_code =  DIV(registers[rs], registers[rt], PC, next_PC, HI, LO);
             break;
@@ -115,7 +115,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             break;
             case 0b000001: 
                 if(instruction_segments[2] == 0b00001){
-                    return_code =  BGEZ(registers[rs], offset, PC, next_PC);
+                    return_code =  BGEZ(registers[rs], offset, PC, next_PC, instruction_segments);
                 }   
                 else if(instruction_segments[2] == 0b10001){
                     return_code =  BGEZAL(registers[rs], offset, PC, registers[31], next_PC);
@@ -158,7 +158,12 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
 }
 
 // intialise PC and next_pc = PC + 4
-instruction_rc ADD(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc ADD(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+
+    if(instruction_segments[4] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
+
     int32_t result = rt + rs;
     if((rt < 0) && (rs < 0) && (result >= 0)){
         std::exit(Arithmetic_Exception);
@@ -177,11 +182,11 @@ instruction_rc ADD(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &
 
 instruction_rc ADDI(const int32_t &rs, int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
     int32_t sign_extended_const = immediate;
-
-    if((rs < 0) && (sign_extended_const < 0) && (rs + sign_extended_const >=0)){
+    int32_t result = rs + sign_extended_const;
+    if((rs < 0) && (sign_extended_const < 0) && (result >=0)){
         std::exit(Arithmetic_Exception);
     }
-    else if((rs >= 0) && (sign_extended_const >= 0) && (rs + sign_extended_const < 0)){
+    else if((rs >= 0) && (sign_extended_const >= 0) && (result < 0)){
         std::exit(Arithmetic_Exception);
     }
     else{
@@ -203,15 +208,25 @@ instruction_rc ADDIU(const int32_t &rs, int32_t &rt, const int16_t &immediate, u
     return 0;
 }
 
-instruction_rc ADDU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
-    rd = rt + rs;
+instruction_rc ADDU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+
+    if(instruction_segments[4] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
+    uint32_t unsigned_rs = rs;
+    uint32_t unsigned_rt = rt;
+    rd = unsigned_rs + unsigned_rt;
     PC = next_PC;
     next_PC += 4;
 
     return 0;
 }
 
-instruction_rc AND(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc AND(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
+
     rd = rs & rt;
     PC = next_PC;
     next_PC += 4;
@@ -245,7 +260,10 @@ instruction_rc BEQ(const int32_t &rs, const int32_t &rt, const int16_t &immediat
     return 0;
 }
 
-instruction_rc BGEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
+instruction_rc BGEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 1 ){
+        std::exit(Invalid_Instruction);
+    }
     int32_t offset = immediate << 2;
 
     if(rs >= 0){
@@ -368,10 +386,11 @@ instruction_rc DIV(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t 
 }
 
 instruction_rc DIVU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO){
-
+    uint32_t unsigned_rs = rs;
+    uint32_t unsigned_rt = rt;
     if(rt != 0){
-        LO = rs / rt;
-        HI = rs % rt; 
+        LO = unsigned_rs / unsigned_rt;
+        HI = unsigned_rs % unsigned_rt; 
     }
 
     PC = next_PC;
@@ -416,7 +435,7 @@ instruction_rc JR(const int32_t &rs, uint32_t &PC, uint32_t &next_PC){
     return 0;
 }
 
-instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC,std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem){
+instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -460,7 +479,7 @@ instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0; 
 }
 
-instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC,std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem){
+instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -502,7 +521,7 @@ instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
     return 0; 
 }
 
-instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC,std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem){
+instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -552,7 +571,7 @@ instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0;
 }
 
-instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC,std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem){
+instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -608,7 +627,7 @@ instruction_rc LUI(int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t
 
 }
 
-instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t> Data_mem, std::vector<uint8_t> Instruction_mem){
+instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
     if(mem_address % 4 == 0){
@@ -1010,7 +1029,9 @@ instruction_rc SUB(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &
 }
 
 instruction_rc SUBU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
-    rd =  rs - rt;
+    uint32_t unsigned_rs = rs;
+    uint32_t unsigned_rt = rt;
+    rd =  unsigned_rs - unsigned_rt;
     PC = next_PC;
     next_PC += 4;
 
