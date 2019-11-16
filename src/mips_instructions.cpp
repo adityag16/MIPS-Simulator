@@ -435,7 +435,7 @@ instruction_rc JR(const int32_t &rs, uint32_t &PC, uint32_t &next_PC){
     return 0;
 }
 
-instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
+instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -479,7 +479,7 @@ instruction_rc LB(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0; 
 }
 
-instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
+instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -521,7 +521,7 @@ instruction_rc LBU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
     return 0; 
 }
 
-instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
+instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -571,7 +571,7 @@ instruction_rc LH(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0;
 }
 
-instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
+instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
 
@@ -627,7 +627,7 @@ instruction_rc LUI(int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t
 
 }
 
-instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, std::vector<uint8_t>& Instruction_mem){
+instruction_rc LW(const int32_t &base, int32_t &rt, const int16_t &offset, uint32_t &PC, uint32_t &next_PC, const std::vector<uint8_t>& Data_mem, const std::vector<uint8_t>& Instruction_mem){
     int32_t sign_ext_offset = offset;
     int32_t mem_address = base + sign_ext_offset; 
     if(mem_address % 4 == 0){
