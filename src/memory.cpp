@@ -58,16 +58,16 @@ void lwr_helper(const std::vector<uint8_t>& mem, uint32_t index, int32_t &rt, in
 		
     }
     else if(mem_address % 4 == 1){
-		word = pull_hword_from_memory(mem, index);
+		word = mem[index] + (mem[index-1] << 8);
 		rt = (word & 0xFFFF) + (rt & 0xFFFF0000);
         
     }
     else if(mem_address % 4 == 2){
-        word = (mem[index] << 16) + (mem[index+1] << 8) + (mem[index+2]);
+        word = (mem[index]) + (mem[index-1] << 8) + (mem[index-2] << 16);
 		rt = (word & 0xFFFFFF) + (rt & 0xFF000000);
     }
     else{
-		rt = ((mem[index]) + (mem[index+1] << 8) + (mem[index+2] << 16) + (mem[index+3] << 24));
+		rt = ((mem[index]) + (mem[index-1] << 8) + (mem[index-2] << 16) + (mem[index-3] << 24));
         
     }
 }
