@@ -19,51 +19,51 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             break;
             case 0b100001: return_code =  ADDU(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break; 
-            case 0b100010: return_code =  SUB(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b100010: return_code =  SUB(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
             case 0b100100: return_code =  AND(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b011010: return_code =  DIV(registers[rs], registers[rt], PC, next_PC, HI, LO);
+            case 0b011010: return_code =  DIV(registers[rs], registers[rt], PC, next_PC, HI, LO, instruction_segments);
             break;
-            case 0b011011: return_code =  DIVU(registers[rs], registers[rt], PC, next_PC, HI, LO);
+            case 0b011011: return_code =  DIVU(registers[rs], registers[rt], PC, next_PC, HI, LO, instruction_segments);
             break; 
-            case 0b001000: return_code =  JR(registers[rs], PC, next_PC);
+            case 0b001000: return_code =  JR(registers[rs], PC, next_PC, instruction_segments);
             break;
-            case 0b010000: return_code =  MFHI(registers[rd], PC, next_PC, HI);
+            case 0b010000: return_code =  MFHI(registers[rd], PC, next_PC, HI, instruction_segments);
             break; 
-            case 0b010010: return_code =  MFLO(registers[rd], PC, next_PC, LO);
+            case 0b010010: return_code =  MFLO(registers[rd], PC, next_PC, LO, instruction_segments);
             break;
-            case 0b010001: return_code =  MTHI(registers[rs], PC, next_PC, HI);
+            case 0b010001: return_code =  MTHI(registers[rs], PC, next_PC, HI, instruction_segments);
             break;
-            case 0b010011: return_code =  MTLO(registers[rs], PC, next_PC, LO);
+            case 0b010011: return_code =  MTLO(registers[rs], PC, next_PC, LO, instruction_segments);
             break;
-            case 0b011000: return_code =  MULT(registers[rs], registers[rt], PC, next_PC, HI, LO);
+            case 0b011000: return_code =  MULT(registers[rs], registers[rt], PC, next_PC, HI, LO, instruction_segments);
             break;
-            case 0b011001: return_code =  MULTU(registers[rs], registers[rt], PC, next_PC, HI, LO);
+            case 0b011001: return_code =  MULTU(registers[rs], registers[rt], PC, next_PC, HI, LO, instruction_segments);
             break; 
-            case 0b100101: return_code =  OR(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b100101: return_code =  OR(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b000000: return_code =  SLL(sa, registers[rt], registers[rd], PC, next_PC);
+            case 0b000000: return_code =  SLL(sa, registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b000100: return_code =  SLLV(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b000100: return_code =  SLLV(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break; 
-            case 0b101010: return_code =  SLT(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b101010: return_code =  SLT(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b101011: return_code =  SLTU(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b101011: return_code =  SLTU(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b000011: return_code =  SRA(sa, registers[rt], registers[rd], PC, next_PC);
+            case 0b000011: return_code =  SRA(sa, registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b000111: return_code =  SRAV(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b000111: return_code =  SRAV(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b100110: return_code =  XOR(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b100110: return_code =  XOR(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b100011: return_code =  SUBU(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b100011: return_code =  SUBU(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b000110: return_code =  SRLV(registers[rs], registers[rt], registers[rd], PC, next_PC);
+            case 0b000110: return_code =  SRLV(registers[rs], registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b000010: return_code =  SRL(sa, registers[rt], registers[rd], PC, next_PC);
+            case 0b000010: return_code =  SRL(sa, registers[rt], registers[rd], PC, next_PC, instruction_segments);
             break;
-            case 0b001001: return_code =  JALR(registers[rs], registers[rd], PC, next_PC);
+            case 0b001001: return_code =  JALR(registers[rs], registers[rd], PC, next_PC, instruction_segments);
             break;
 
             default: std::exit(Invalid_Instruction);
@@ -99,9 +99,9 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             break;
             case 0b000100: return_code =  BEQ(registers[rs], registers[rt], offset, PC, next_PC);
             break;
-            case 0b000111: return_code =  BGTZ(registers[rs], offset, PC, next_PC);
+            case 0b000111: return_code =  BGTZ(registers[rs], offset, PC, next_PC, instruction_segments);
             break;
-            case 0b000110: return_code =  BLEZ(registers[rs], offset, PC, next_PC);
+            case 0b000110: return_code =  BLEZ(registers[rs], offset, PC, next_PC, instruction_segments);
             break;
             case 0b000101: return_code =  BNE(registers[rs], registers[rt], offset, PC, next_PC);
             break;
@@ -118,13 +118,13 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
                     return_code =  BGEZ(registers[rs], offset, PC, next_PC, instruction_segments);
                 }   
                 else if(instruction_segments[2] == 0b10001){
-                    return_code =  BGEZAL(registers[rs], offset, PC, registers[31], next_PC);
+                    return_code =  BGEZAL(registers[rs], offset, PC, registers[31], next_PC, instruction_segments);
                 }
                 else if(instruction_segments[2] == 0b00000){
-                    return_code =  BLTZ(registers[rs], offset, PC, next_PC);
+                    return_code =  BLTZ(registers[rs], offset, PC, next_PC, instruction_segments);
                 }
                 else if(instruction_segments[2] == 0b10000){
-                    return_code =  BLTZAL(registers[rs], offset, PC, registers[31], next_PC);
+                    return_code =  BLTZAL(registers[rs], offset, PC, registers[31], next_PC, instruction_segments);
                 }
             break;
             case 0b101011: return_code =  SW(registers[base], registers[rt], offset, PC, next_PC, Data_mem);
@@ -139,7 +139,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             break;
             case 0b100101: return_code =  LHU(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
             break;
-            case 0b001111: return_code =  LUI(registers[rt], offset, PC, next_PC);
+            case 0b001111: return_code =  LUI(registers[rt], offset, PC, next_PC, instruction_segments);
             break;
             case 0b101000: return_code =  SB(registers[base], registers[rt], offset, PC, next_PC, Data_mem);
             break;
@@ -278,7 +278,11 @@ instruction_rc BGEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, u
     return 0;
 }
 
-instruction_rc BGEZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC){
+instruction_rc BGEZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 17 ){
+        std::exit(Invalid_Instruction);
+    }
+
     int32_t offset = immediate << 2;
 
     reg31 = PC + 8;
@@ -294,7 +298,10 @@ instruction_rc BGEZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC,
     return 0;
 }
 
-instruction_rc BGTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
+instruction_rc BGTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
     int32_t offset = immediate << 2;
 
     if(rs > 0){
@@ -309,7 +316,10 @@ instruction_rc BGTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, u
     return 0;
 }
 
-instruction_rc BLEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
+instruction_rc BLEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
     int32_t offset = immediate << 2;
 
     if(rs <= 0){
@@ -324,7 +334,10 @@ instruction_rc BLEZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, u
     return 0;
 }
 
-instruction_rc BLTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
+instruction_rc BLTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
     int32_t offset = immediate << 2;
 
     if(rs < 0){
@@ -340,7 +353,10 @@ instruction_rc BLTZ(const int32_t &rs, const int16_t &immediate, uint32_t &PC, u
 
 }
 
-instruction_rc BLTZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC){
+instruction_rc BLTZAL(const int32_t &rs, const int16_t &immediate, uint32_t &PC, int32_t &reg31, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 16 ){
+        std::exit(Invalid_Instruction);
+    }
     int32_t offset = immediate << 2;
 
     reg31 = PC + 8;
@@ -372,7 +388,10 @@ instruction_rc BNE(const int32_t &rs, const int32_t &rt, const int16_t &immediat
     return 0;
 }
 
-instruction_rc DIV(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO){
+instruction_rc DIV(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO, uint32_t* instruction_segments){
+    if(instruction_segments[3] != 0 || instruction_segments[4] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
 
     if(rt != 0){
         LO = rs / rt;
@@ -385,7 +404,10 @@ instruction_rc DIV(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t 
     return 0; 
 }
 
-instruction_rc DIVU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO){
+instruction_rc DIVU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO, uint32_t* instruction_segments){
+    if(instruction_segments[3] != 0 || instruction_segments[4] != 0 ){
+        std::exit(Invalid_Instruction);
+    }
     uint32_t unsigned_rs = rs;
     uint32_t unsigned_rt = rt;
     if(rt != 0){
@@ -420,7 +442,10 @@ instruction_rc JAL(const uint16_t &instr_index, uint32_t &PC, uint32_t &next_PC,
     return 0;
 }
 
-instruction_rc JALR(const int32_t &rs, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc JALR(const int32_t &rs, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] !=0 || instruction_segments[4] !=0 ){
+        std::exit(Invalid_Instruction);
+    }
     rd = PC + 8;
     PC = next_PC;
     next_PC =  rs;
@@ -428,7 +453,10 @@ instruction_rc JALR(const int32_t &rs, int32_t &rd, uint32_t &PC, uint32_t &next
     return 0;
 }
 
-instruction_rc JR(const int32_t &rs, uint32_t &PC, uint32_t &next_PC){
+instruction_rc JR(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[2] !=0 || instruction_segments[3] !=0 || instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     PC = next_PC;
     next_PC =  rs;
 
@@ -618,7 +646,10 @@ instruction_rc LHU(const int32_t &base, int32_t &rt, const int16_t &offset, uint
     return 0;    
 }
 
-instruction_rc LUI(int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
+instruction_rc LUI(int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[1] != 0){
+        std::exit(Invalid_Instruction);
+    }
     rt = (immediate << 16) & 0xFFFF0000;
     PC = next_PC;
     next_PC += 4;
@@ -778,8 +809,10 @@ instruction_rc LWR(const int32_t &base, int32_t &rt, const int16_t &offset, uint
     return 0;
 }
 
-instruction_rc MFHI(int32_t &rd, uint32_t &PC, uint32_t &next_PC, const int32_t &HI){
-
+instruction_rc MFHI(int32_t &rd, uint32_t &PC, uint32_t &next_PC, const int32_t &HI, uint32_t* instruction_segments){
+    if(instruction_segments[1] != 0 || instruction_segments[2] != 0 || instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     rd = HI;
 
     PC = next_PC;
@@ -788,8 +821,10 @@ instruction_rc MFHI(int32_t &rd, uint32_t &PC, uint32_t &next_PC, const int32_t 
     return 0;
 }
 
-instruction_rc MFLO(int32_t &rd, uint32_t &PC, uint32_t &next_PC, const int32_t &LO){
-
+instruction_rc MFLO(int32_t &rd, uint32_t &PC, uint32_t &next_PC, const int32_t &LO, uint32_t* instruction_segments){
+    if(instruction_segments[1] != 0 || instruction_segments[2] != 0 || instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     rd = LO;
 
     PC = next_PC;
@@ -798,8 +833,10 @@ instruction_rc MFLO(int32_t &rd, uint32_t &PC, uint32_t &next_PC, const int32_t 
     return 0;
 }
 
-instruction_rc MTHI(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, int32_t &HI){
-
+instruction_rc MTHI(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, int32_t &HI, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 0 || instruction_segments[3] != 0 || instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     HI = rs;
 
     PC = next_PC;
@@ -808,8 +845,10 @@ instruction_rc MTHI(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, int32_t 
     return 0;
 }
 
-instruction_rc MTLO(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, int32_t &LO){
-
+instruction_rc MTLO(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, int32_t &LO, uint32_t* instruction_segments){
+    if(instruction_segments[2] != 0 || instruction_segments[3] != 0 || instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     LO = rs;
 
     PC = next_PC;
@@ -818,7 +857,10 @@ instruction_rc MTLO(const int32_t &rs, uint32_t &PC, uint32_t &next_PC, int32_t 
     return 0;
 }
 
-instruction_rc MULT(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO){ // check signed func
+instruction_rc MULT(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO, uint32_t* instruction_segments){ 
+    if(instruction_segments[3] != 0 || instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     int64_t sign_ext_rs = rs;
     int64_t sign_ext_rt = rt;
 
@@ -833,7 +875,10 @@ instruction_rc MULT(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t
     return 0; 
 }
 
-instruction_rc MULTU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO){
+instruction_rc MULTU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_t &next_PC, int32_t &HI, int32_t &LO, uint32_t* instruction_segments){
+    if(instruction_segments[3] != 0 || instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     uint64_t unsigned_rs = static_cast<uint32_t>(rs);
     uint64_t unsigned_rt = static_cast<uint32_t>(rt);
     uint64_t product = (unsigned_rs * unsigned_rt); 
@@ -848,7 +893,10 @@ instruction_rc MULTU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_
     return 0; 
 }
 
-instruction_rc OR(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc OR(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     rd = rs | rt;
 
     PC = next_PC;
@@ -870,7 +918,10 @@ instruction_rc ORI(const int32_t &rs, int32_t &rt, const int16_t &immediate, uin
 
 }
 
-instruction_rc SLL(const uint32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SLL(const uint32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[1] != 0){
+        std::exit(Invalid_Instruction);
+    }
     rd = rt << sa;
 
     PC = next_PC;
@@ -880,7 +931,10 @@ instruction_rc SLL(const uint32_t &sa, const int32_t &rt, int32_t &rd, uint32_t 
 
 }
 
-instruction_rc SLLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SLLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     uint8_t shift_amount = rs & 0x1F;
 
     rd = rt << shift_amount;
@@ -892,7 +946,10 @@ instruction_rc SLLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t 
 
 }
 
-instruction_rc SLT(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SLT(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     if(rs < rt){
         rd = 1;
     }
@@ -944,7 +1001,10 @@ instruction_rc SLTIU(const int32_t &rs, int32_t &rt, const int16_t &immediate, u
 
 }
 
-instruction_rc SLTU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SLTU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     uint32_t unsigned_rs = rs;
     uint32_t unsigned_rt = rt;
     
@@ -962,7 +1022,10 @@ instruction_rc SLTU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t 
 
 }
 
-instruction_rc SRA(const int32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SRA(const int32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[1] != 0){
+        std::exit(Invalid_Instruction);
+    }
     rd = rt >> sa; 
     
     PC = next_PC;
@@ -972,7 +1035,10 @@ instruction_rc SRA(const int32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &
 
 }
 
-instruction_rc SRAV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SRAV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     uint8_t shift_amount = rs & 0x1F;
 
     rd = rt >> shift_amount; 
@@ -984,7 +1050,10 @@ instruction_rc SRAV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t 
 
 }
 
-instruction_rc SRL(const int32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SRL(const int32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[1] != 0){
+        std::exit(Invalid_Instruction);
+    }
     uint32_t unsigned_rt = rt;
     unsigned_rt = unsigned_rt >> sa;
 
@@ -997,7 +1066,10 @@ instruction_rc SRL(const int32_t &sa, const int32_t &rt, int32_t &rd, uint32_t &
 
 }
 
-instruction_rc SRLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SRLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     uint8_t shift_amount = rs & 0x1F;
     uint32_t unsigned_rt = rt;
     unsigned_rt = unsigned_rt >> shift_amount;
@@ -1011,7 +1083,10 @@ instruction_rc SRLV(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t 
 
 }
 
-instruction_rc SUB(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SUB(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     int32_t result = rs -rt;
     if((rs < 0) && (rt >= 0) && (result >= 0)){
         std::exit(Arithmetic_Exception);
@@ -1028,7 +1103,10 @@ instruction_rc SUB(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &
     return 0;
 }
 
-instruction_rc SUBU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
+instruction_rc SUBU(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     uint32_t unsigned_rs = rs;
     uint32_t unsigned_rt = rt;
     rd =  unsigned_rs - unsigned_rt;
@@ -1132,8 +1210,10 @@ instruction_rc SH(const int32_t &base, int32_t &rt, const int16_t &offset, uint3
     return 0; 
 }
 
-instruction_rc XOR(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC){
-
+instruction_rc XOR(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &PC, uint32_t &next_PC, uint32_t* instruction_segments){
+    if(instruction_segments[4] != 0){
+        std::exit(Invalid_Instruction);
+    }
     rd = rs ^ rt;
 
     PC = next_PC;
