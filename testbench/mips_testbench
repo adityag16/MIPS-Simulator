@@ -1,0 +1,75 @@
+#! /bin/bash
+
+simulator_location=$1
+tests_src_files_location="testbench/src/*.txt"
+binary_file_location="testbench/bin"
+output_file="test_results.csv"
+parser_location="./parser/bin/parser"
+
+if [[ -f $output_file ]]
+then
+    rm $output_file
+fi
+
+for file in $tests_src_files_location
+do
+    $parser_location "$file" "$binary_file_location/#"
+done
+
+for file in $tests_src_files_location
+do
+    
+
+    counter=0
+    info_from_files=()
+    while [[ $counter -le 6 ]]
+    do
+        
+        IFS= read -r line
+        info=${line//#}
+        
+        info_from_files+=("$info")
+        (( counter++ ))
+    done < $file
+
+    test_name=${info_from_files[0]}
+    instruction_tested=${info_from_files[1]}
+    test_purpose=${info_from_files[2]}
+    test_author=${info_from_files[3]}
+    expected_exit_code=${info_from_files[4]}
+    expected_putc_output=${info_from_files[5]}
+    getc_input=${info_from_files[6]}
+
+    simulator_output=$(echo $get_c_input | $simulator_location $binary_file_location/$test_name.bin)
+
+    simulator_exit_code=$?
+
+    test_result=""
+    description=""
+
+    if [[ $simulator_exit_code == $expected_exit_code ]]
+    then
+        if [[ $expected_putc_output == $simulator_output ]]
+        then
+            test_result="Pass"
+        else
+            test_result="Fail"
+            description="Expected output from simulator $expected_putc_output,Got $simulator_output"
+        fi
+    else
+        test_result="Fail"
+        description="Expected return code $expected_exit_code,Got return code $simulator_exit_code"
+    fi
+
+    if [[ $test_result == "Fail" ]]
+    then
+        output="$test_name,$instruction_tested,$test_result,$test_author,$test_purpose,$description"
+        echo -e "\e[1;31m $output \e[0m"
+    else
+        output="$test_name,$instruction_tested,$test_result,$test_author,$test_purpose"
+        echo $output
+    fi
+
+    echo $output >> $output_file
+    
+done
