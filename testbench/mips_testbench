@@ -25,7 +25,7 @@ do
     while [[ $counter -le 6 ]]
     do
         
-        IFS= read -r line
+        IFS='' read -r line
         info=${line//#}
         
         info_from_files+=("$info")
@@ -40,16 +40,17 @@ do
     expected_putc_output=${info_from_files[5]}
     getc_input=${info_from_files[6]}
 
-    simulator_output=$(echo $get_c_input | $simulator_location $binary_file_location/$test_name.bin)
-
+    
+    simulator_output=$(echo "$getc_input" | $simulator_location "$binary_file_location/$test_name.bin")
+    
     simulator_exit_code=$?
 
     test_result=""
     description=""
 
-    if [[ $simulator_exit_code == $expected_exit_code ]]
+    if [[ "$simulator_exit_code" == "$expected_exit_code" ]]
     then
-        if [[ $expected_putc_output == $simulator_output ]]
+        if [[ "$expected_putc_output" == "$simulator_output" ]]
         then
             test_result="Pass"
         else
