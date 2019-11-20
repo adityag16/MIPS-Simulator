@@ -236,8 +236,8 @@ instruction_rc AND(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &
 }
 
 instruction_rc ANDI(const int32_t &rs, int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
-    uint32_t zero_extended_const = immediate;
-
+    uint32_t zero_extended_const = immediate ;
+    zero_extended_const = zero_extended_const & 0x0000FFFF;
     rt = rs & zero_extended_const;
     PC = next_PC;
     next_PC += 4;
@@ -1223,7 +1223,7 @@ instruction_rc XOR(const int32_t &rs, const int32_t &rt, int32_t &rd, uint32_t &
 }
 
 instruction_rc XORI(const int32_t &rs, int32_t &rt, const int16_t &immediate, uint32_t &PC, uint32_t &next_PC){
-    uint32_t zero_ext_imm = immediate;
+    uint32_t zero_ext_imm = (uint16_t) immediate;
 
     rt = rs ^ zero_ext_imm;
 
