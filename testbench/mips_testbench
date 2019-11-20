@@ -55,11 +55,11 @@ do
             test_result="Pass"
         else
             test_result="Fail"
-            description="Expected output from simulator $expected_putc_output,Got $simulator_output"
+            description="Expected output from simulator $expected_putc_output Got $simulator_output"
         fi
     else
         test_result="Fail"
-        description="Expected return code $expected_exit_code,Got return code $simulator_exit_code"
+        description="Expected return code $expected_exit_code Got return code $simulator_exit_code"
     fi
 
     if [[ $test_result == "Fail" ]]
