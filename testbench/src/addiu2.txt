@@ -1,0 +1,10 @@
+#addiu2
+#addiu
+#sign extension
+#jj1818
+#255
+#
+#
+
+addiu $2, $2, 0xffff
+jr $0

@@ -1,0 +1,11 @@
+#sll1
+#sll
+#basic functionality
+#jj1818
+#6
+#
+#
+
+addi $1, $1, 0x03
+sll $2, $1, 1 
+jr $0

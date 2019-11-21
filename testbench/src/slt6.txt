@@ -1,0 +1,11 @@
+#slt6
+#slt
+#not set rs=rt
+#jj1818
+#86
+#
+#
+
+slt $2, $1, $2
+addi $2, $2, 86
+jr $0

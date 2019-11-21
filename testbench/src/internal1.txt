@@ -1,0 +1,12 @@
+#internal1
+#internal
+#r0 resilliance
+#jj1818
+#0
+#
+#
+
+addi $1, $1, 0x0001
+add $0, $1, $1
+add $2, $2, $0
+jr $0

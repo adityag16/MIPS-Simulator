@@ -1,0 +1,15 @@
+#divu2
+#divu
+#basic functionality
+#jj1818
+#246
+#
+#
+
+addi $1, $1, -94
+addi $2, $2, 8
+divu $1, $2
+mfhi $1
+mflo $2
+addu $2, $2, $1
+jr $0

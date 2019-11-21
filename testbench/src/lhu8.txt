@@ -1,0 +1,11 @@
+#lhu8
+#lhu
+#load from getc
+#ag6618
+#89
+#
+#Y
+
+lui $3, 0x3000
+lh $2, 2($3)
+jr $0

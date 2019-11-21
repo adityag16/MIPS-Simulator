@@ -1,0 +1,10 @@
+#lbu7
+#lbu
+#load from putc
+#ag6618
+#245
+#
+#
+
+lui $3, 0x3000
+lb $2, 6($3)

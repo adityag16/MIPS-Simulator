@@ -1,0 +1,11 @@
+#lhu12
+#lhu
+#Instr memory misalligned
+#ag6618
+#245
+#
+#
+
+lui $3 0x1000
+lh $2, 29($3)
+jr $0

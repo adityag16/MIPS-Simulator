@@ -1,0 +1,14 @@
+#lw2
+#lw
+#misallinged upper boundary of data mem 
+#ag6618
+#245
+#
+#
+
+lui $3 0x2000
+lui $4 0x400
+add $3, $3, $4
+addi $3, $3, -4
+lw $2, 2($3)
+jr $0

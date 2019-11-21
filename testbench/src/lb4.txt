@@ -1,0 +1,11 @@
+#lb4
+#lb
+#getc alligned 
+#ag6618
+#97
+#
+#a
+
+lui $3, 0x3000
+lb $2, 3($3)
+jr $0

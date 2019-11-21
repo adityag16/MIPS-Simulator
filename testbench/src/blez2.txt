@@ -1,0 +1,13 @@
+#blez2
+#blez
+#branch r=0
+#jj1818
+#8
+#
+#
+
+blez $2, 3
+addi $2, $2, 8
+addi $1, $1, 78
+add $2, $2, $1
+jr $0

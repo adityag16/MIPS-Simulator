@@ -1,0 +1,12 @@
+#xori2
+#xori
+#zero extension
+#jj1818
+#0
+#
+#
+
+addi $1, $1, 0x16
+xori $2, $1, 0xf
+srl $2, $2, 16  
+jr $0

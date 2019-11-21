@@ -1,0 +1,13 @@
+#blez3
+#blez
+#branch not taken
+#jj1818
+#114
+#
+#
+
+addi $2, $2, 28
+blez $2, 3
+addi $2, $2, 8
+addi $2, $2, 78
+jr $0

@@ -1,0 +1,15 @@
+#multu1
+#multu
+#basic functionality
+#jj1818
+#160
+#
+#
+
+addi $1, $1, 32
+addi $2, $2, 5
+multu $1, $2
+mfhi $1
+mflo $2
+add $2, $2, $1
+jr $0

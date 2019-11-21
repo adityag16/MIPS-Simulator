@@ -1,0 +1,14 @@
+#add3
+#add
+#no overflow
+#jj1818
+#50
+#
+#
+
+
+addi $2, $2, 1
+addi $1, $1, -1
+add $2, $2, $1
+addi $2, $2, 50
+jr   $0

@@ -1,0 +1,17 @@
+#bgtz1
+#bgtz
+#branch rs>0
+#jj1818
+#56
+#
+#
+
+
+addi $1, $1, 2
+bgtz $1, 5
+addi $2, $2, 56
+nop
+addi $2, $2, 20
+add $2, $2, $2
+addi $2, $2, 6
+jr $0

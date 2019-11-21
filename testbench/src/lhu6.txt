@@ -1,0 +1,17 @@
+#lhu6
+#lh
+#zero extension 
+#ag6618
+#87
+#
+#
+
+lui $3 0x2000
+addi $4, $4, 0xFFFF
+lui $5, 0xFFFF
+add $5, $5, $4
+sw $5, 0($3)
+lhu $2, 2($3)
+srl $2, $2, 16
+addi $2, $2, 87
+jr $0

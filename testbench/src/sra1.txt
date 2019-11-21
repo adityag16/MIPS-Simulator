@@ -1,0 +1,11 @@
+#sra1
+#sra
+#Divide positive number by 4
+#jj1818
+#5
+#
+#
+
+addi $2, $2, 20
+sra $2, $2, 2   
+jr $0

@@ -1,0 +1,11 @@
+#lh2
+#lh
+#below lower boundary of data mem 
+#ag6618
+#245
+#
+#
+
+lui $3 0x2000
+lh $2, -2($3)
+jr $0

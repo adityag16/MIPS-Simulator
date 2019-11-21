@@ -1,0 +1,12 @@
+#lb8
+#lb
+#below instr memory lower boundary 
+#ag6618
+#245
+#
+#
+
+lui $3, 0x1000
+addi $3, $3, -1
+lb $2, 0($3)
+jr $0

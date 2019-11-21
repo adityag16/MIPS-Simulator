@@ -1,0 +1,14 @@
+#mflo3
+#mflo
+#basic functionality
+#jj1818
+#0
+#
+#
+
+addi $1, $1, 32768
+sll $2, $1, 2
+sll $1, $1, 2
+mult $1, $2
+mflo $2
+jr $0

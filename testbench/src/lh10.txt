@@ -1,0 +1,14 @@
+#lh10
+#lh
+#Instr memory misalligned
+#ag6618
+#245
+#
+#
+
+lui $3 0x1000
+lui $4, 0x2009
+addi $5, $5 0xFEDC
+or $5, $5, $4
+lh $2, 11($3)
+jr $0

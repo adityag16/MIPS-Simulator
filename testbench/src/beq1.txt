@@ -1,0 +1,15 @@
+#beq1
+#beq
+#basic functionality
+#jj1818
+#6
+#
+#
+
+addi $1, $2, 3
+addi $2, $2, 3
+beq $1, $2, 2
+nop
+addi $2, $2, 7
+add $2, $2, $2
+jr $0

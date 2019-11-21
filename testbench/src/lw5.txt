@@ -1,0 +1,11 @@
+#lw5
+#lw
+#getc misalligned 
+#ag6618
+#245
+#
+#&
+
+lui $3, 0x3000
+lw $2, 2($3)
+jr $0

@@ -1,0 +1,16 @@
+#lw8
+#lw
+#end of data memory
+#ag6618
+#205
+#
+#
+
+lui $3 0x2000
+lui $4 0x400
+add $3, $3, $4
+addi $3, $3, -4
+addi $5, $5, 0x1BCD
+sw $5, 0($3)
+lw $2, 0($3)
+jr $0

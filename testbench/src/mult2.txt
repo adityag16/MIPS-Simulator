@@ -1,0 +1,15 @@
+#mult2
+#mult
+#positive mult negative
+#jj1818
+#250
+#
+#
+
+addi $1, $1, 5
+addi $2, $2, -1
+mult $1, $2
+mfhi $1
+mflo $2
+add $2, $2, $1
+jr $0

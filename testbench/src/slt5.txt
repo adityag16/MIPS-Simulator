@@ -1,0 +1,13 @@
+#slt5
+#slt
+#no overflow
+#jj1818
+#24
+#
+#
+
+addi $1, $1, 24
+addi $2, $2, 23
+slt $3, $1, $2
+add $2, $3, $1
+jr $0

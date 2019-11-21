@@ -1,0 +1,11 @@
+#lbu4
+#lbu
+#below instr memory lower boundary 
+#ag6618
+#245
+#
+#
+
+lui $3, 0x1000
+lb $2, -7($3)
+jr $0

@@ -1,0 +1,16 @@
+#lbu8
+#lbu
+#load from data mem
+#ag6618
+#137
+#
+#
+
+lui $3 0x2000
+lui $4, 0x2121
+addi $5, $5 0xF111
+or $5, $5, $4
+addi $5, $5, 0x78
+sw $5, 8($3)
+lbu $2, 11($3)
+jr $0

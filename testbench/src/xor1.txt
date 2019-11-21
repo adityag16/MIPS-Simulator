@@ -1,0 +1,13 @@
+#xor1
+#xor
+#basic functionality
+#jj1818
+#15
+#
+#
+
+addi $1, $1, 0x00f0
+addi $2, $2, 0x000f
+xor $2, $2, $1
+srl $2, $2, 4
+jr $0

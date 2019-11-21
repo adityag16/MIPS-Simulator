@@ -1,0 +1,13 @@
+#bgez1
+#bgez
+#branch rs=0
+#jj1818
+#0
+#
+#
+
+bgez $1, 2
+nop
+addi $2, $2, 20
+add $2, $2, $2
+jr $0

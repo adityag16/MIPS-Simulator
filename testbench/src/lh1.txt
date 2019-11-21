@@ -1,0 +1,11 @@
+#lh1
+#lh
+#above upper boundary of data mem 
+#ag6618
+#245
+#
+#
+
+lui $3 0x2400
+lh $2, 0($3)
+jr $0

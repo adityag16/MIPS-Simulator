@@ -1,0 +1,15 @@
+#lb6
+#lb
+#above instr memory upper boundary 
+#ag6618
+#245
+#
+#
+
+
+lui $3, 0x1000
+lui $4, 0x100
+add $3, $4, $3
+addi $3, $3, 1
+lb $2, 0($3)
+jr $0

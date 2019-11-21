@@ -1,0 +1,13 @@
+#lbu5
+#lbu
+#getc alligned
+#ag6618
+#182
+#
+#+
+
+lui $3, 0x3000
+lbu $2, 3($3)
+addi $2, $2, 687
+srl $2, $2, 2
+jr $0

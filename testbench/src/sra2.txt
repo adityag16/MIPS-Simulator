@@ -1,0 +1,11 @@
+#sra2
+#sra
+#Divide negative number by 8
+#jj1818
+#253
+#
+#
+
+addi $2, $2, -21
+sra $2, $2, 3   
+jr $0

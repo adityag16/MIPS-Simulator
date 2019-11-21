@@ -1,0 +1,11 @@
+#lb9
+#lb
+#read from instr memory
+#ag6618
+#3
+#
+#
+
+lui $3, 0x1000
+lb $2, 1($3)
+jr $0

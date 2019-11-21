@@ -1,0 +1,13 @@
+#slt3
+#slt
+#both negative
+#jj1818
+#0
+#
+#
+
+addi $2, $2, -1
+addi $3, $3, -2
+slt $3, $2, $3
+addu $2, $3, $3
+jr $0

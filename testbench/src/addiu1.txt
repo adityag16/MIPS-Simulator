@@ -1,0 +1,10 @@
+#addiu1
+#addiu
+#basic funcationality
+#jj1818
+#1
+#
+#
+
+addiu $2, $2, 0x0001
+jr $0

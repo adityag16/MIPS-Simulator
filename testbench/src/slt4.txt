@@ -1,0 +1,13 @@
+#slt4
+#slt
+#both positive not set
+#jj1818
+#8
+#
+#
+
+addi $1, $1, 0x03
+addi $2, $2, 0x07
+slt $3, $1, $2
+add $2, $2, $3
+jr $0

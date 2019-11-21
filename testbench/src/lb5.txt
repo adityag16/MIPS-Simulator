@@ -1,0 +1,17 @@
+#lb5
+#lb
+#data memory upper boundary 
+#ag6618
+#4
+#
+#
+
+lui $3, 0x0102
+ori $3, $3, 0x0304
+lui $5 0x2000
+lui $4 0x400
+add $5, $5, $4
+addi $5, $5, -4
+sw $3 0($5)
+lb $2 3($5)
+jr $0

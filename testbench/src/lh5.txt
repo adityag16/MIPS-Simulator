@@ -1,0 +1,16 @@
+#lh5
+#lh
+#load from data mem 
+#ag6618
+#63
+#
+#
+
+lui $3 0x2000
+lui $4, 0x2009
+addi $5, $5 0xFEDC
+or $5, $5, $4
+sw $5, 8($3)
+lh $2, 10($3)
+srl $2, $2, 26
+jr $0

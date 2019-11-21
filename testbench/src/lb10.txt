@@ -1,0 +1,14 @@
+#lb10
+#lb
+#read nop instr memory
+#ag6618
+#0
+#
+#
+
+lui $3, 0x1000
+lui $4, 0x8
+add $3, $4, $3
+lb $2, 1($3)
+jr $0
+

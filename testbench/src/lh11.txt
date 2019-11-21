@@ -1,0 +1,11 @@
+#lh11
+#lh
+#Data memory misalligned
+#ag6618
+#245
+#
+#
+
+lui $3 0x2000
+lh $2, 7($3)
+jr $0

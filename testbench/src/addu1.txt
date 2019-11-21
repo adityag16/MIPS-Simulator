@@ -1,0 +1,12 @@
+#addu1
+#addu
+#basic functionality 
+#jj1818
+#33
+#
+#
+
+addi $2 $2, 0x0020
+addi $3, $3, 0x0001
+addu $2, $3, $2
+jr $0

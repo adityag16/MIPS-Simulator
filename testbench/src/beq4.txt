@@ -1,0 +1,13 @@
+#beq4
+#beq
+#branch offset 0
+#jj1818
+#106
+#
+#
+
+addi $3, $2, 5
+add  $1, $1, $3
+beq  $1, $3, 0
+addi $2, $2, 53
+jr $0

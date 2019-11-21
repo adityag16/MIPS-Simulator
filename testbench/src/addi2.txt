@@ -1,0 +1,10 @@
+#addi2
+#addi
+#sign extension
+#jj1818
+#255
+#
+#
+
+addi $2, $2, 0x80ff
+jr $0

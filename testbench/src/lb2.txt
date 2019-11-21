@@ -1,0 +1,14 @@
+#lb2
+#lb
+#above upper data mem boundary 
+#ag6618
+#245
+#
+#
+
+lui $3 0x2000
+lui $4 0x400
+add $3, $3, $4
+ori $3, $3, 1
+lb $2, 0($3)
+jr $0

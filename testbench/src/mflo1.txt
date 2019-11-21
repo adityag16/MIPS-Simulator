@@ -1,0 +1,12 @@
+#mflo1
+#mflo
+#zero initialised
+#jj1818
+#0
+#
+#
+
+mflo $1
+mflo $2
+add $2, $2, $1
+jr $0

@@ -1,0 +1,13 @@
+#slt1
+#slt
+#both positive set
+#jj1818
+#7
+#
+#
+
+addi $1, $1, 0x03
+addi $2, $2, 0x07
+slt $3, $2, $1
+add $2, $2, $3
+jr $0

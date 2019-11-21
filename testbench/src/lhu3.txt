@@ -1,0 +1,11 @@
+#lhu3
+#lhu
+#above upper boundary of instr mem 
+#ag6618
+#245
+#
+#
+
+lui $3 0x1100
+lh $2, 20($3)
+jr $0

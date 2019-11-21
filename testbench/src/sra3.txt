@@ -1,0 +1,12 @@
+#sra3
+#sra
+#Signed bit continuity
+#jj1818
+#255
+#
+#
+
+
+addi $2, $2, -1
+sra $2, $2, 20
+jr $0

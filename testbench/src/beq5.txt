@@ -1,0 +1,12 @@
+#beq5
+#beq
+#negative branch
+#jj1818
+#245
+#
+#
+
+addi $1, $1, 2
+add $2, $2, $1
+beq $1, $2, 0x8000
+jr $0

@@ -1,0 +1,13 @@
+#slti1
+#slti
+#one positive one negative
+#jj1818
+#44
+#
+#
+
+addi $1, $1, 22 
+slti $2, $1, -7 
+add $1, $1, $1 
+add $2, $1, $2 
+jr $0

@@ -1,0 +1,12 @@
+#slti5
+#slti
+#not set both negative
+#jj1818
+#219
+#
+#
+
+addi $2, $2, -38
+slti $2, $2, -6
+addi $2, $2, -38   
+jr $0

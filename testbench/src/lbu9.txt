@@ -1,0 +1,17 @@
+#lbu9
+#lbu
+#zero extension 
+#ag6618
+#84
+#
+#
+
+lui $3 0x2000
+addi $4, $4, 0xFFFF
+lui $5, 0xFFFF
+add $5, $5, $4
+sw $5, 0($3)
+lbu $2, 2($3)
+srl $2, $2, 4
+addi $2, $2, 0x45
+jr $0

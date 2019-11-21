@@ -1,0 +1,12 @@
+#lw10
+#lw
+#load from putc location 
+#ag6618
+#245
+#
+#
+
+lui $3, 0x3000
+addi $3, $3, 4
+lw $2, 0($3)
+jr $0

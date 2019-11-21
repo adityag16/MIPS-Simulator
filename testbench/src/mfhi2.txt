@@ -1,0 +1,13 @@
+#mfhi2
+#mfhi
+#basic functionality
+#jj1818
+#255
+#
+#
+
+addi $1, $1, -20
+addi $2, $2, 1
+mult $1, $2
+mfhi $2
+jr $0

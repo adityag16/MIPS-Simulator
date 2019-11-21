@@ -1,0 +1,12 @@
+#addi3
+#addi
+#overflow
+#jj1818
+#246
+#
+#
+
+addi $1, $1, 0xffff
+srl $1, $1, 0x0001
+addi $1, $1, 0x0001
+jr $0	

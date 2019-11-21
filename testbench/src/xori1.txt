@@ -1,0 +1,11 @@
+#xori1
+#xori
+#basic functionality
+#jj1818
+#1
+#
+#
+
+addi $1, $1, 0x0110
+xori $2, $1, 0x1111
+jr $0

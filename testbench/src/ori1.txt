@@ -1,0 +1,11 @@
+#ori1
+#ori
+#basic functionality
+#jj1818
+#9
+#
+#
+
+addi $1, $1, 8
+ori $2, $1, 1
+jr $0

@@ -1,0 +1,12 @@
+#beq6
+#beq
+#branch past last instruction
+#jj1818
+#245
+#
+#
+
+add $1, $1, $2
+add $2, $2, $1
+beq $1, $2, 0xff00
+jr $0

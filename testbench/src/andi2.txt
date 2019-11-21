@@ -1,0 +1,14 @@
+#andi2
+#andi
+#zero extension
+#jj1818
+#1
+#
+#
+
+addi $2, $2, 0x1311
+sll $2, $2, 0x0008
+addi $2, $2, 0x0001
+andi $2, $2, 0x1010
+srl $2, $2, 0x000c
+jr $0

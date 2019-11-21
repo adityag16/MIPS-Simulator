@@ -1,0 +1,13 @@
+#sllv3
+#sllv
+#shift amt bottom 5 bits
+#jj1818
+#96
+#
+#
+
+addi $2, $2, 0xf2
+addi $1, $1, 0x03
+sllv $2, $1, $2 
+srl $2, $2, 13
+jr $0

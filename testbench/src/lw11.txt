@@ -1,0 +1,11 @@
+#lw11
+#lw
+#below lower boundary of instr mem 
+#ag6618
+#245
+#
+#
+
+lui $3, 0x1000
+lw $2, -12($3)
+jr $0

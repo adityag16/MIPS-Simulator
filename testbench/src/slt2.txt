@@ -1,0 +1,16 @@
+#slt2
+#slt
+#one positive one negative
+#jj1818
+#8
+#
+#
+
+addi $1, $1, 0xffff
+addi $2, $2, 0xffff
+srl $2, $2, 1
+slt $3, $2, $1
+addu $2, $2, $3
+srl $2, $2, 28
+addi $2, $2, 1
+jr $0

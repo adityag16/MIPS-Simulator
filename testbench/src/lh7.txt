@@ -1,0 +1,11 @@
+#lh7
+#lh
+#load from putc
+#ag6618
+#245
+#
+#
+
+lui $3, 0x3000
+lh $2, 4($3)
+jr $0

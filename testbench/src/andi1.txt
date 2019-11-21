@@ -1,0 +1,12 @@
+#andi1
+#andi
+#basic functionality
+#jj1818
+#16
+#
+#
+
+addi $2, $2, 0x1101
+andi $2, $2, 0x1010
+srl $2, $2, 8 
+jr $0

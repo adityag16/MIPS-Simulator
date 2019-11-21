@@ -1,0 +1,15 @@
+#div3
+#div
+#negative divide by positive
+#jj1818
+#243
+#
+#
+
+addi $1, $1, -83
+addi $2, $2, 8
+div $1, $2
+mfhi $1
+mflo $2
+addu $2, $2, $1
+jr $0

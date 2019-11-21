@@ -1,0 +1,11 @@
+#lw7
+#lw
+#misalligned at lower data mem boundary 
+#ag6618
+#245
+#
+#
+
+lui $3 0x2000
+lw $2, 1($3)
+jr $0

@@ -1,0 +1,12 @@
+#and2
+#and
+#basic functionality
+#jj1818
+#1
+#
+#
+
+addi $2, $2, 0x0101
+addi $3, $3, 0xffff
+and $2, $2, $3
+jr $0

@@ -1,0 +1,11 @@
+#sllv2
+#sllv
+#zero shift 
+#jj1818
+#3
+#
+#
+
+addi $1, $1, 0x03
+sllv $2, $1, $2 
+jr $0

@@ -1,0 +1,13 @@
+#beq2
+#beq
+#delay slot
+#jj1818
+#10
+#
+#
+
+beq $1, $2, 2
+addi $2, $2, 5
+addi $2, $2, 7
+add $2, $2, $2
+jr $0

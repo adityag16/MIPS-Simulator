@@ -1,0 +1,12 @@
+#slti3
+#slti
+#not set both positive
+#jj1818
+#4
+#
+#
+
+addi $1, $1, 3 
+slti $2, $1, 84 
+add $2, $2, $1  
+jr $0

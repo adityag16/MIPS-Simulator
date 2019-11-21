@@ -1,0 +1,15 @@
+#divu3
+#divu
+#two negative numbers
+#jj1818
+#162
+#
+#
+
+addi $1, $1, -94
+addi $2, $2, -28
+divu $1, $2 
+mfhi $1
+mflo $2
+addu $2, $2, $1
+jr $0

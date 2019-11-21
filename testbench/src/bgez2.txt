@@ -1,0 +1,15 @@
+#bgez2
+#bgez
+#branch rs>0
+#jj1818
+#152
+#
+#
+
+addi $1, $1, 20
+bgez $1, 2
+addi $2, $2, 56
+nop
+addi $2, $2, 20
+add $2, $2, $2
+jr $0
