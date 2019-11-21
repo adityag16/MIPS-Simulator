@@ -1,0 +1,12 @@
+#jr8
+#jr
+#jump to invalid location 2
+#jj1818
+#245
+#
+#
+
+addi $2, $2, 0x11
+sll $2, $2, 24
+addi $2, $2, 30
+jr $2

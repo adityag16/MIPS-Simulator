@@ -1,0 +1,15 @@
+#jal1
+#jal
+#jump valid location
+#jj1818
+#99
+#
+#
+
+addi $2, $2, 67
+jal label
+addi $2, $2, 32
+nop 
+label: nop
+nop
+jr $0

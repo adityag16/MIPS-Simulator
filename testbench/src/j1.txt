@@ -1,0 +1,13 @@
+#j1
+#j
+#successful jump
+#jj1818
+#3
+#
+#
+
+j end
+addi $2, $3, 3
+add $2, $3, $3
+nop
+end: jr $0

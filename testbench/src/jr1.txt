@@ -1,0 +1,10 @@
+#jr1
+#jr
+#jump to value in r0
+#jj1818
+#0
+#
+#
+
+
+jr $0

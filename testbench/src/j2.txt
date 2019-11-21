@@ -1,0 +1,12 @@
+#j2
+#j
+#jump past last instruction
+#jj1818
+#245
+#
+#
+
+addi $3, $3, 90
+j 0xFFF0
+nop
+jr $0

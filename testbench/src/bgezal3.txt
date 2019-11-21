@@ -1,0 +1,14 @@
+#bgezal3
+#bgezal
+#usuccessful branch
+#jj1818
+#254
+#
+#
+
+addi $2, $2, -2
+bgezal $2, 2
+nop
+nop
+nop
+jr $0

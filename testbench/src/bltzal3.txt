@@ -1,0 +1,12 @@
+#bltzal3
+#bltzal
+#successful branch
+#jj1818
+#30
+#
+#
+
+addi $2, $2, -54
+bltzal $2, 0
+addi $2, $2, 42
+jr $0

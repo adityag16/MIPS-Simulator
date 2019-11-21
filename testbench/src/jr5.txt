@@ -1,0 +1,13 @@
+#jr5
+#jr
+#jump to getc
+#jj1818
+#245
+#
+#
+
+addi $2, $2, 0x3
+sll $2, $2, 28
+addi $2, $2, 4
+nop
+jr $2

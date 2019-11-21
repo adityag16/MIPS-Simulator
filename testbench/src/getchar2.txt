@@ -1,0 +1,11 @@
+#getchar2
+#lb
+#functionality getc
+#hk2018
+#65
+#
+#A
+
+lui $3, 0x3000
+lb $2, 3($3)
+jr $0

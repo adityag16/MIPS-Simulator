@@ -1,0 +1,11 @@
+#jr2
+#jr
+#jump past putc and getc
+#jj1818
+#245
+#
+#
+
+addi $2, $2, 0xFFFF
+nop
+jr $2

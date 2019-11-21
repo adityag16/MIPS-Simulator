@@ -1,0 +1,14 @@
+#bltzal1
+#bltzal
+#usuccessful branch rs>0
+#jj1818
+#44
+#
+#
+
+addi $7, $7, 42
+addi $2, $2, 56
+bltzal $2, 2
+addi $2, $2, 30
+sub $2, $2, $7
+jr $0

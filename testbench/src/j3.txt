@@ -1,0 +1,13 @@
+#j3
+#j
+#jump with negative offset
+#jj1818
+#245
+#
+#
+
+
+j -1
+nop
+nop
+jr $0

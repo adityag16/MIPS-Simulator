@@ -1,0 +1,10 @@
+#jr6
+#jr
+#negative jump offset
+#jj1818
+#245
+#
+#
+
+addi $2, $2, -1
+jr $2

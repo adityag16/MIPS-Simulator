@@ -1,0 +1,15 @@
+#bgezal1
+#bgezal
+#successful branch rs>0
+#jj1818
+#12
+#
+#
+
+addi $2, $2, 2
+addi $4, $4, 6
+addi $2, $3, 3
+bgezal $2, 2
+add $2, $4, $4
+addi $2, $2, 57
+jr $0

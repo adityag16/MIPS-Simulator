@@ -1,0 +1,12 @@
+#bgezal4
+#bgezal
+#check link
+#jj1818
+#8
+#
+#
+
+bgezal $2, 1
+add $2, $2, $31
+nop
+jr $0

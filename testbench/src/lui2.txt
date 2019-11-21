@@ -1,0 +1,11 @@
+#lui2
+#lui
+#Basic functionality
+#ag6618
+#52
+#
+#
+
+lui $2, 0x1234
+srl $2, $2, 16
+jr $0

@@ -1,0 +1,12 @@
+#jr4
+#jr
+#jump to putc
+#jj1818
+#245
+#
+#
+
+addi $2, $2, 0x3
+sll $2, $2, 28
+nop
+jr $2
