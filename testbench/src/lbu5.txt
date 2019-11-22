@@ -1,6 +1,6 @@
 #lbu5
 #lbu
-#getc alligned
+#getc aligned
 #ag6618
 #182
 #
