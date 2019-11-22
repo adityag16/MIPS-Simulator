@@ -3,7 +3,6 @@
 simulator_location=$1
 tests_src_files_location="testbench/src/*.txt"
 binary_file_location="testbench/bin"
-output_file="test_results.csv"
 parser_location="./parser/bin/parser"
 
 if [[ -f $output_file ]]
@@ -70,6 +69,6 @@ do
         echo $output
     fi
 
-    echo $output >> $output_file
+    
     
 done
