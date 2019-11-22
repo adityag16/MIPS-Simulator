@@ -1,0 +1,13 @@
+#bgtz3
+#bgtz
+#no branch if 0
+#jj1818
+#6
+#
+#
+ 
+bgtz  $1, 2
+addi $2, $2, 3
+add $2, $2, $2
+add  $2, $2, $1
+jr $0
