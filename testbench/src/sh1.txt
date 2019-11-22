@@ -1,0 +1,14 @@
+#sh1
+#sh
+#basic functionality
+#jj1818
+#124
+#
+#
+
+addi $2, $2, 0x7CFF
+lui $5, 0x2000
+sh $2, 0($5)
+lh $6, 0($5)
+srl $2, $6, 8
+jr $0

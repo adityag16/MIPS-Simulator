@@ -1,0 +1,15 @@
+#lb12
+#lb
+#load only the relevant byte
+#jj1818
+#254
+#
+#
+
+addi $5, $5, 0xCFF
+lui $8, 0x2321
+sb $5, 4($8)
+lb $13, 4($8)
+srl $13, $13, 4
+add $2, $13, $13
+jr $0

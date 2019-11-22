@@ -1,0 +1,14 @@
+#sb8
+#sb
+#store to invlaid location 1
+#jj1818
+#245
+#
+#
+
+addi $5, $5, 24
+lui $13, 0x2400
+sb $5, 4($13)
+lb $13, 4($13)
+add $2, $13, $13
+jr $0

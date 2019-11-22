@@ -1,0 +1,14 @@
+#sh5
+#sh
+#store halfword offset 3 misalligned
+#jj1818
+#245
+#
+#
+
+addi $19, $19, 85
+lui $21, 0x2103
+sh $19, 3($21)
+lh $13, 3($21)
+add $2, $13, $13
+jr $0

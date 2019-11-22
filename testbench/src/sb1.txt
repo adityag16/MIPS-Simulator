@@ -1,0 +1,12 @@
+#sb1
+#sb
+#basic functionality
+#jj1818
+#56
+#
+#
+
+addi $2, $2, 56
+lui $5, 0x2000
+sb $2, 0($5)
+jr $0

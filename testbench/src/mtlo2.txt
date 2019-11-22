@@ -2,11 +2,11 @@
 #mtlo
 #basic functionality
 #jj1818
-#53
+#203
 #
 #
 
 addi $2, $2, -53
-mthi $2
-mfhi $2
+mtlo $2
+mflo $2
 jr $0

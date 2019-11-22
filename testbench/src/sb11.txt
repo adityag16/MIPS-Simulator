@@ -1,0 +1,12 @@
+#sb11
+#sb
+#store to instr mem
+#jj1818
+#245
+#
+#
+
+addi $23, $23, 46
+lui $19, 0x1080
+sb $23, 0($19)
+jr $0

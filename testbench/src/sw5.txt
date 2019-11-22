@@ -1,0 +1,14 @@
+#sw5
+#sw
+#store offset 4 alligned
+#jj1818
+#254
+#
+#
+
+addi $4, $4, 0xFFFF
+lui $21, 0x2321
+sw $4, 4($21)
+lw $6, 4($21)
+add $2, $6, $6
+jr $0

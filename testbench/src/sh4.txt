@@ -1,0 +1,14 @@
+#sh4
+#sh
+#store halfword offset 2 alligned
+#jj1818
+#74
+#
+#
+
+addi $19, $19, 37
+lui $21, 0x2103
+sh $19, 2($21)
+lh $13, 2($21)
+add $2, $13, $13
+jr $0

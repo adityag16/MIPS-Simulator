@@ -1,0 +1,14 @@
+#sh2
+#sh
+#store negative value
+#jj1818
+#144
+#
+#
+
+addi $2, $2, -56
+lui $25, 0x2010 
+sh $2, 0($25)
+lh $4, 0($25)
+add $2, $4, $4
+jr $0

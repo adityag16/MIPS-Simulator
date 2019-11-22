@@ -88,7 +88,7 @@ void store_word_to_memory(std::vector<uint8_t>& mem, uint32_t index, int32_t rt)
 
 
 void store_hword_to_memory(std::vector<uint8_t>& mem, uint32_t index, int32_t rt){
-	uint8_t byte_0 = (rt & 0x0000FF00) >> 8;
+	uint8_t byte_0 = ((rt & 0x0000FF00) >> 8);
 	uint8_t byte_1 = rt & 0x000000FF;
 
 	mem[index] = byte_0;

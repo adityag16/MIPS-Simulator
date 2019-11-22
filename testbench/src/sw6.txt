@@ -1,0 +1,16 @@
+#sw6
+#sw
+#store to putc
+#jj1818
+#0
+#?
+#
+
+lui $5, 0x3000
+addi $6, $6, 0xFFFF
+addi $5, $5, 4
+srl $6, $6, 8
+sll $6, $6, 8
+addi $6, $6, 0x3F
+sw $6, 0($5)
+jr $0

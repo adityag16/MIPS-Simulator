@@ -1,0 +1,14 @@
+#sw2
+#sw
+#store offset 1 misalligned
+#jj1818
+#245
+#
+#
+
+addi $4, $4, 0xFFFF
+lui $21, 0x2101
+sw $4, 1($21)
+lh $8, 1($21)
+add $2, $8, $8
+jr $0

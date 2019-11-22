@@ -2,13 +2,13 @@
 #jalr
 #jump to valid location
 #jj1818
-#24
+#20
 #
 #
 
 addi $2, $2, 1
 sll $2, $2, 28
-addi $2, $2, 24
+addi $2, $2, 20
 jalr $3, $2
 nop
 jr $0

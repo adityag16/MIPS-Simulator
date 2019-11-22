@@ -1,0 +1,14 @@
+#sw1
+#sw
+#basic functionality
+#jj1818
+#32
+#
+#
+
+lui $5, 0x2000
+sw $5, 0($5)
+lw $5, 0($5)
+srl $2, $5, 24
+jr $0
+

@@ -1,0 +1,14 @@
+#sb2
+#sb
+#basic functionality
+#jj1818
+#44
+#
+#
+
+addi $2, $2, 22
+lui $8, 0x2300
+sb $2, 0($8)
+lb $3, 0($8)
+add $2, $3, $3
+jr $0
