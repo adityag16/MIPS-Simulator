@@ -3,16 +3,16 @@ simulator: mips_instructions.o decode.o simulator.o  memory.o
 
 mips_instructions.o: src/mips_instructions.cpp src/mips_instructions.hpp
 	mkdir -p bin
-	g++ -c -g src/mips_instructions.cpp -o bin/mips_instructions.o	
+	g++ -c src/mips_instructions.cpp -o bin/mips_instructions.o	
 
 simulator.o: src/simulator.cpp src/mips_instructions.hpp src/decode.hpp
-	g++ -c -g src/simulator.cpp -o bin/simulator.o
+	g++ -c src/simulator.cpp -o bin/simulator.o
 
 decode.o: src/decode.cpp src/decode.hpp
-	g++ -c -g src/decode.cpp -o bin/decode.o
+	g++ -c src/decode.cpp -o bin/decode.o
 
 memory.o: src/memory.cpp src/memory.hpp
-	g++ -c -g src/memory.cpp -o bin/memory.o
+	g++ -c src/memory.cpp -o bin/memory.o
 
 
 testbench: main.o parser.o instructionList.o
