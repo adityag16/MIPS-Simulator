@@ -1,6 +1,6 @@
 #sw5
 #sw
-#store offset 4 alligned
+#store offset 4 aligned
 #jj1818
 #254
 #
