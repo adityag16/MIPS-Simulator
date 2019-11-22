@@ -1,0 +1,14 @@
+#jal2
+#jal
+#jumping past the jr r0 instruction
+#jj1818
+#245
+#
+#
+
+jal label
+addi $5, $5, 6
+jr $0
+label: nop
+
+    

@@ -1,0 +1,11 @@
+#jal3
+#jal
+#jumping to a location with a negative value
+#jj1818
+#245
+#
+#
+
+jal -23
+addi $5, $5, 6
+jr $0
