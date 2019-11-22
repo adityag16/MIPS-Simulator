@@ -66,7 +66,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             case 0b001001: return_code =  JALR(registers[rs], registers[rd], PC, next_PC, instruction_segments);
             break;
 
-            default: std::exit(Invalid_Instruction);
+            default: std::exit(Internal_Error);
         }
     }
     else if(opcode == 0b000010 || opcode == 0b000011){ // J Type
@@ -79,7 +79,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             return_code =  JAL(inst_index, PC, next_PC, registers[31]);
         }
         else{
-            std::exit(Invalid_Instruction);
+            std::exit(Internal_Error);
         }
         
     }
@@ -149,7 +149,7 @@ instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, ui
             break;
             case 0b100110: return_code = LWR(registers[base], registers[rt], offset, PC, next_PC, Data_mem, Instruction_mem);
             break;
-            default: std::exit(Invalid_Instruction);
+            default: std::exit(Internal_Error);
         }
 
     }

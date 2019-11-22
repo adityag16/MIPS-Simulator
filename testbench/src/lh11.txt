@@ -1,6 +1,6 @@
 #lh11
 #lh
-#Data memory misalligned
+#Data memory misaligned
 #ag6618
 #245
 #

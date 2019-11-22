@@ -1,6 +1,6 @@
 #lb4
 #lb
-#getc alligned 
+#getc aligned 
 #ag6618
 #97
 #

@@ -1,6 +1,6 @@
 #bltzal2
 #bltzal
-#usuccessful branch rs=0
+#unsuccessful branch rs=0
 #jj1818
 #244
 #

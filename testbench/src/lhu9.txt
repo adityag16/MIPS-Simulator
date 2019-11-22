@@ -1,6 +1,6 @@
 #lhu9
 #lhu
-#getc misalligned
+#getc misaligned
 #ag6618
 #245
 #

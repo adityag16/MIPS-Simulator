@@ -1,6 +1,6 @@
 #sw4
 #sw
-#store offset 3 misalligned
+#store offset 3 misaligned
 #jj1818
 #245
 #

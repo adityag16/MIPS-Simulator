@@ -1,6 +1,6 @@
 #lw2
 #lw
-#misallinged upper boundary of data mem 
+#misaligned upper boundary of data mem 
 #ag6618
 #245
 #

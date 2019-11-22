@@ -1,6 +1,6 @@
 #lw7
 #lw
-#misalligned at lower data mem boundary 
+#misaligned at lower data mem boundary 
 #ag6618
 #245
 #

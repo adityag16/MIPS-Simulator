@@ -9,6 +9,7 @@ typedef int32_t instruction_rc;
 #define Arithmetic_Exception -10
 #define Memory_Exception -11
 #define Invalid_Instruction -12
+#define Internal_Error -20
 
 instruction_rc MIPS_instruction(int32_t* registers, int32_t &HI, int32_t &LO, uint32_t &PC, uint32_t &next_PC, std::vector<uint8_t>& Data_mem, uint32_t* instruction_segments, std::vector<uint8_t>& Instruction_mem);
 

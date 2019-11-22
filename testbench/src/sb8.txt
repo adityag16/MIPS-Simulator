@@ -1,6 +1,6 @@
 #sb8
 #sb
-#store to invlaid location 1
+#store to invalid location 1
 #jj1818
 #245
 #

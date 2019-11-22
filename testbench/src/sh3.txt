@@ -1,6 +1,6 @@
 #sh3
 #sh
-#store halfword offset 1 misalligned
+#store halfword offset 1 misaligned
 #jj1818
 #245
 #

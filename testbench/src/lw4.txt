@@ -1,6 +1,6 @@
 #lw4
 #lw
-#getc alligned 
+#getc aligned 
 #ag6618
 #38
 #
