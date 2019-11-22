@@ -1,0 +1,15 @@
+#bne2
+#bne
+#no branch rs=rt
+#jj1818
+#81
+#
+#
+
+addi $2, $2, 26 
+addi $1, $1, 26 
+bne  $1, $2, 2
+addi $1, $1, 3
+add $2, $2, $2
+add  $2, $2, $1
+jr $0
