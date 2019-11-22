@@ -11,5 +11,7 @@ make testbench
 To run the testbench against the simulator use commands:
 ./bin/mips_testbench ./bin/mips_simulator
 
-Acknowlegdements to Olly Larkin for creating the parser used to generate the MIPS binary files from the given source files
+Acknowlegdements: 
+Olly Larkin for creating the parser used to generate the MIPS binary files from the given source files
+Dr Daivd Thomas for contiuous support and guidance throughout the project
 

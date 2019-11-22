@@ -17,6 +17,7 @@ memory.o: src/memory.cpp src/memory.hpp
 
 testbench: main.o parser.o instructionList.o
 	cp testbench/mips_testbench ./bin/
+	chmod u+x bin/mips_testbench
 	mkdir -p parser/bin
 	g++ parser/src/main.o parser/src/parser.o parser/src/instructionList.o -o parser/bin/parser
 
@@ -28,14 +29,11 @@ parser.o: parser/src/parser.cpp parser/src/parser.hpp
 
 instructionList.o: parser/src/instructionList.cpp parser/src/instructionList.hpp
 	g++ --std=c++11 -c parser/src/instructionList.cpp -o parser/src/instructionList.o
-#./prog.exe if Windows/Cygwin
+
 
 clean:
 	rm -rf bin/
 	rm -f -rf parser/src/*.o parser/bin/
-# rm *.o prog.exe if Windows/Cygwin
-#structure
-#target: [dependencies list ...]
-#	commands #starts with a tabulation
+
 
 
