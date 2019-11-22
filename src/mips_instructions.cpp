@@ -881,11 +881,16 @@ instruction_rc MULTU(const int32_t &rs, const int32_t &rt, uint32_t &PC, uint32_
     }
     uint64_t unsigned_rs = static_cast<uint32_t>(rs);
     uint64_t unsigned_rt = static_cast<uint32_t>(rt);
-    uint64_t product = (unsigned_rs * unsigned_rt); 
+    uint32_t HI_unsigned = HI;
+    uint32_t LO_unsigned = LO;
+    uint64_t product = (unsigned_rs * unsigned_rt);
+    
+    HI_unsigned = (product & 0xFFFFFFFF00000000) >> 32;
 
-    HI = (product & 0xFFFFFFFF00000000) >> 32;
+    LO_unsigned = product & 0xFFFFFFFF;
 
-    LO = product & 0xFFFFFFFF;
+    HI = HI_unsigned;
+    LO = LO_unsigned;
 
     PC = next_PC;
     next_PC += 4;
