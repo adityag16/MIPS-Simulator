@@ -1,0 +1,12 @@
+#lwr14
+#lwr
+#load from putc
+#jj1818
+#245
+#
+#
+
+lui $4, 0x3000
+addi $4, $4, 4
+lwl $7, 0($4)
+jr $0

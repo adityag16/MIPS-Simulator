@@ -1,0 +1,11 @@
+#lwr13
+#lwr
+#load from invalid location
+#jj1818
+#245
+#
+#
+
+lui $4, 0x24B0
+lwl $7, 0($4)
+jr $0

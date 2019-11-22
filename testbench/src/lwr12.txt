@@ -1,0 +1,11 @@
+#lwr12
+#lwr
+#load from above instr mem
+#jj1818
+#245
+#
+#
+
+lui $4, 0x1100
+lwl $7, 0($4)
+jr $0
