@@ -1,4 +1,4 @@
-#lb12
+#lb10
 #lb
 #load only the relevant byte
 #jj1818
