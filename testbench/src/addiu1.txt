@@ -1,6 +1,6 @@
 #addiu1
 #addiu
-#basic funcationality
+#basic functionality
 #jj1818
 #1
 #
