@@ -1,6 +1,6 @@
 #lw5
 #lw
-#getc misalligned 
+#getc misaligned 
 #ag6618
 #245
 #
