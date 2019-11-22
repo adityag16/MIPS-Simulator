@@ -1,6 +1,6 @@
 #sh4
 #sh
-#store halfword offset 2 alligned
+#store halfword offset 2 aligned
 #jj1818
 #74
 #
