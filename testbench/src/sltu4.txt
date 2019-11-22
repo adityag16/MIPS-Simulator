@@ -1,0 +1,13 @@
+#sltu4
+#sltu
+#both negative set
+#jj1818
+#212
+#
+#
+
+addi $2, $2, 0xFFFE
+addi $3, $3, 0xFFFA 
+sltu $5, $2, $3
+addi $2, $5, 212
+jr $0

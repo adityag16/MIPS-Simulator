@@ -1,0 +1,14 @@
+#jalr9
+#jalr
+#jump to putc 
+#jj1818
+#245
+#
+#
+
+addi $2, $2, 3
+lui $3, 0x3000
+addi $3, $3, 4
+jalr $5, $3
+nop
+jr $0

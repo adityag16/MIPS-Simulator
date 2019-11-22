@@ -1,0 +1,12 @@
+#sltiu7
+#sltiu
+#both negative not set
+#jj1818
+#247
+#
+#
+
+addi $2, $2, -9
+sltiu $5, $2, -10
+add $2, $2, $5
+jr $0

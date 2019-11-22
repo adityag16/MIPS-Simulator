@@ -1,0 +1,12 @@
+#sltiu2
+#sltiu
+#negative reg and positive immediate set
+#jj1818
+#37
+#
+#
+
+addi $5, $5, 0xFFFF
+sltiu $2, $5, 82
+addi $2, $2, 37
+jr $0

@@ -1,0 +1,13 @@
+#jalr7
+#jalr
+#jump to invalid location 3
+#jj1818
+#245
+#
+#
+
+addi $2, $2, 0x245
+sll $2, $2, 20
+jalr $3, $2
+nop
+jr $0

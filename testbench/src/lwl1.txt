@@ -1,0 +1,12 @@
+#lwl1
+#lwl
+#below lower data mem boundary 
+#ag6618
+#245
+#
+#
+
+lui $3 0x2000
+addi $3, $3, -4
+lwl $2, 2($3)
+jr $0

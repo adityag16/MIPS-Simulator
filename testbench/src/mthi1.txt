@@ -1,0 +1,14 @@
+#mthi1
+#mthi
+#basic functionality
+#jj1818
+#68
+#
+#
+
+addi $2, $2, 34
+mthi $2
+mfhi $2
+mfhi $3
+add $2, $2, $3
+jr $0

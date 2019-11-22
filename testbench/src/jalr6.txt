@@ -1,0 +1,13 @@
+#jalr6
+#jalr
+#jump to data mem
+#jj1818
+#245
+#
+#
+
+addi $2, $2, 0x214
+sll $2, $2, 20
+jalr $0, $2
+nop
+jr $0

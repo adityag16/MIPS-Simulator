@@ -1,0 +1,10 @@
+#jalr3
+#jalr
+#jump to 0
+#jj1818
+#0
+#
+#
+
+jalr $3, $0
+nop

@@ -1,0 +1,11 @@
+#lwl2
+#lwl
+#above upper data mem boundary 
+#ag6618
+#245
+#
+#
+
+lui $3 0x2400
+lwl $2, 0($3)
+jr $0

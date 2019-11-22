@@ -1,0 +1,13 @@
+#sltiu8
+#sltiu
+#both positive not set
+#jj1818
+#21
+#
+#
+
+addi $2, $2, 20
+addi $3, $3, 21 
+sltu $5, $2, $3
+add $2, $2, $5
+jr $0

@@ -1,0 +1,12 @@
+#lwr9
+#lwr
+#load from putc
+#jj1818
+#245
+#
+#
+
+lui $9, 0x3000
+addi $9, $9, 4
+lwr $2, 0($9)
+jr $0

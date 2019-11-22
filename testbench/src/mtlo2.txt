@@ -1,0 +1,12 @@
+#mtlo2
+#mtlo
+#basic functionality
+#jj1818
+#53
+#
+#
+
+addi $2, $2, -53
+mthi $2
+mfhi $2
+jr $0

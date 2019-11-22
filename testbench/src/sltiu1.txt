@@ -1,0 +1,12 @@
+#sltiu1
+#sltiu
+#both positive set
+#jj1818
+#4
+#
+#
+
+addi $5, $5, 3
+sltiu $4, $5, 20
+addu $2, $4, $5
+jr $0

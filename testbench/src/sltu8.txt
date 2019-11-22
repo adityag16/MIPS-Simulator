@@ -1,0 +1,13 @@
+#sltu8
+#sltu
+#both negative not set 
+#jj1818
+#23
+#
+#
+
+addi $2, $2, 0xFFFC
+addi $3, $3, 0xFFFC
+sltu $5, $2, $3
+addi $2, $5, 23
+jr $0

@@ -1,0 +1,13 @@
+#subu3
+#subu
+#no overflow 2
+#jj1818
+#1
+#
+#
+
+lui $2, 0x8000
+addi $1, $1, 0xffff
+srl $1, $1, 1
+subu $2, $2, $1
+jr $0

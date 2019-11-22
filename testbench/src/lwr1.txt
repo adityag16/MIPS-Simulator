@@ -1,0 +1,13 @@
+#lwr1
+#lwr
+#offset 0
+#jj1818
+#255
+#
+#
+
+addi $4, $4, 0xFFFF
+lui $3, 0x2000
+sw $4, 0($3)
+lwr $2, 0($3)
+jr $0

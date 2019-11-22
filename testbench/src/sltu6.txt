@@ -1,0 +1,13 @@
+#sltu6
+#sltu
+#one positive one negative not set
+#jj1818
+#49
+#
+#
+
+addi $2, $2, 24
+addi $3, $3, 0XFFFC 
+sltu $5, $2, $3
+addi $2, $5, 48 
+jr $0

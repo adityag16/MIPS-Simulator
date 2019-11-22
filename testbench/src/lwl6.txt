@@ -1,0 +1,22 @@
+#lwl6
+#lwl
+#load 2 bytes from data mem
+#ag6618
+#130
+#
+#
+
+lui $3, 0x2000
+addi $4, $4, 0xBBAA
+sll $4, $4, 16
+addi $4, $4, 0x0908
+sw $4, 28($3)
+xori $5, $4, 0xFFEE
+lui $6, 0x1234
+xor $5, $5, $6
+sw $5, 32($3)
+lwl $2, 30($3)
+srl $2, $2, 8
+lwl $2, 34($3)
+srl $2, $2, 10
+jr $0

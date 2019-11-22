@@ -1,0 +1,12 @@
+#subu1
+#subu
+#basic functionality
+#jj1818
+#29
+#
+#
+
+addi $4, $4, 56
+addi $3, $3, 27
+sub $2, $4, $3
+jr $0

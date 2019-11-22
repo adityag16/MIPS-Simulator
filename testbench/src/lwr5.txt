@@ -1,0 +1,18 @@
+#lwr5
+#lwr
+#load positive no
+#jj1818
+#138
+#
+#
+
+lui $9, 0x2004
+lui $7, 0x3456
+addi $7, $7, 0x4231
+sw $7, 0($9)
+lwr $8, 2($9)
+srl $6, $8, 16
+srl $8, $8, 8
+andi $8, $8, 0xFF
+add $2, $8, $6
+jr $0

@@ -1,0 +1,17 @@
+#lwl7
+#lwl
+#load 1 byte from data mem
+#ag6618
+#219
+#
+#
+
+
+lui $3, 0x2000
+lui $4, 0x6699
+addi $4, $4, 0x1276
+sw $4, 8($3)
+addi $2, $0, 0xCCDD
+lwl $2, 9($3)
+srl $2, $2, 3
+jr $0

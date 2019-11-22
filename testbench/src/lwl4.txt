@@ -1,0 +1,12 @@
+#lwl4
+#lwl
+#below lower instr mem boundary
+#ag6618
+#245
+#
+#
+
+lui $3 0x1000
+addi $3, $3, 4
+lwl $2, -5($3)
+jr $0

@@ -1,0 +1,15 @@
+#lwl5
+#lwl
+#getc load
+#ag6618
+#76
+#
+#lol
+
+lui $8, 0x3000
+addi $3, $3, 0xFFFF
+lwl $3, 3($8)
+srl $4, $3, 17
+addi $4, $4, 0xABCD
+add $2, $2, $4
+jr $0

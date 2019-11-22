@@ -1,0 +1,19 @@
+#lwr8
+#lwr
+#load 2 bytes 2
+#jj1818
+#191
+#
+#
+
+lui $9, 0x2004
+addi $7, $7, 0x4236
+addi $8, $8, 0x8689
+sh $7, 0($9)
+sh $8, 2($9)
+lwr $4, 3($9)
+srl $5, $4, 16
+andi $5, $5, 0xFF
+andi $8, $8, 0xFF
+add $2, $5, $8
+jr $0

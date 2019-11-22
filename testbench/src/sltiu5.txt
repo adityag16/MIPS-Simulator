@@ -1,0 +1,12 @@
+#sltiu5
+#sltiu
+#negative immediate and positive reg not set
+#jj1818
+#20
+#
+#
+
+addi $5, $5, 19
+sltiu $2, $5, -0x8000
+add $2, $2, $5
+jr $0

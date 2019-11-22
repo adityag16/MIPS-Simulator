@@ -1,0 +1,13 @@
+#sltu2
+#sltu
+#one positive one negative set
+#jj1818
+#36
+#
+#
+
+addi $2, $2, 0xFFFF
+addi $3, $3, 36 
+sltu $5, $2, $3
+add $2, $3, $5
+jr $0
