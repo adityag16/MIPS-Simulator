@@ -1,6 +1,6 @@
 #lhu10
 #lhu
-#Instr memory misalligned
+#Instr memory misaligned
 #ag6618
 #245
 #
