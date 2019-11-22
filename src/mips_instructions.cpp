@@ -777,7 +777,7 @@ instruction_rc LWR(const int32_t &base, int32_t &rt, const int16_t &offset, uint
                 rt = rt | 0xFF;
             }
             else{
-                rt = (rt & 0xFFFFFF00) + (Char_in & 0xFF); 
+                rt = (rt & 0xFFFFFF00) + ((Char_in & 0xFF000000) >> 24); 
             }
         }
         else if(mem_address % 4 == 1){
@@ -785,7 +785,7 @@ instruction_rc LWR(const int32_t &base, int32_t &rt, const int16_t &offset, uint
                 rt = rt | 0xFFFF;
             }
             else{
-                rt = (rt & 0xFFFF0000) + (Char_in & 0xFFFF);
+                rt = (rt & 0xFFFF0000) + ((Char_in & 0xFFFF0000) >> 16);
             }
         }
         else if(mem_address % 4 == 2){
@@ -793,7 +793,7 @@ instruction_rc LWR(const int32_t &base, int32_t &rt, const int16_t &offset, uint
                 rt = rt | 0xFFFFFF;
             }
             else{
-                rt = (rt & 0xFF000000) + (Char_in & 0xFFFFFF);
+                rt = (rt & 0xFF000000) + ((Char_in & 0xFFFFFF00) >> 8) ;
             }
         }
         else{
