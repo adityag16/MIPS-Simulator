@@ -13,7 +13,7 @@ To construct the test bench use command:
 To run the simulator against the testbench use commands:
 `./bin/mips_testbench ./bin/mips_simulator`
 
-Both the simulator and testbench were implemented from scratch without the use of the pre-exisitng skeleton code. 
+Both the simulator and testbench were implemented from scratch without the use of the pre-existing skeleton code. 
 
 # Acknowlegdements
 
